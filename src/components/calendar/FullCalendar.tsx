@@ -3,7 +3,7 @@ import DayView from "./DayView";
 import WeekView from "./WeekView";
 import MonthView from "./MonthView";
 import { Event } from "@/utils/types";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 export default function FullCalendar() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -96,8 +96,8 @@ export default function FullCalendar() {
   };
 
   return (
-    <div className="flex size-full items-center justify-center">
-      <div className="w-4/5 rounded-lg shadow-md">
+    <div className="flex size-full justify-center">
+      <div className="w-4/5 rounded-lg">
         {/* Barre de navigation */}
         <div className="sticky top-0 z-10 mb-4 flex items-center justify-between bg-white p-4 shadow-sm">
           <h2 className="text-xl font-bold">Calendrier</h2>
@@ -108,7 +108,7 @@ export default function FullCalendar() {
           </div>
         </div>
         {/* Affichage de la vue */}
-        <div>{renderView()}</div>
+        {renderView()}
       </div>
     </div>
   );

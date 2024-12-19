@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import EventCard from "./EventCard";
 import { Event } from "@/utils/types";
+import { Button } from "@/components/ui/button";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
 type DayViewProps = {
   events: Event[];
@@ -12,30 +14,61 @@ export default function DayView({ events }: DayViewProps) {
     (_, i) => `${i.toString().padStart(2, "0")}:00`
   );
 
-  const currentDate = events.length ? new Date(events[0].start) : new Date();
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  const handlePreviousDay = () => {
+    setCurrentDate((prevDate) => {
+      const newDate = new Date(prevDate);
+      newDate.setDate(newDate.getDate() - 1);
+      return newDate;
+    });
+  };
+
+  const handleNextDay = () => {
+    setCurrentDate((prevDate) => {
+      const newDate = new Date(prevDate);
+      newDate.setDate(newDate.getDate() + 1);
+      return newDate;
+    });
+  };
 
   return (
-    <div className="grid-row-2 relative grid border-l">
-      {/* En-tête et first row*/}
-      <div className="col-span-1 row-span-1 border-b p-2">
-        <div className="p-2 text-center font-bold">
+    <div className="grid-row-2 relative grid">
+      {/* En-tête et navigation */}
+      <div className="col-span-1 row-span-1 flex items-center justify-between border-b p-2">
+        <Button onClick={handlePreviousDay} variant="default">
+          <ChevronLeft /> Précédent
+        </Button>
+        <div className="p-2 text-center font-bold uppercase">
           {currentDate.toLocaleDateString("fr-FR", {
             weekday: "long",
             day: "numeric",
             month: "long",
           })}
         </div>
+        <Button onClick={handleNextDay}>
+          Suivant <ChevronRight />
+        </Button>
+      </div>
+      {/* Event All-day*/}
+      <div className="col-span-1 row-span-1 border-b p-2">
         {events
-          .filter((event) => event.allDay && new Date(event.start).toDateString() === currentDate.toDateString())
-          .map((event) => { 
-                //If they are many event of all day we can display them in a row
-                return(
-                    <span key={event.id} className="mx-1 rounded bg-blue-300 p-1 text-white">
-                        {event.title}
-                    </span>
-                )
-            })
-        }
+          .filter(
+            (event) =>
+              event.allDay &&
+              new Date(event.start).toDateString() ===
+                currentDate.toDateString()
+          )
+          .map((event) => {
+            return (
+              <EventCard
+                key={event.id}
+                event={event}
+                view="day"
+                type="simple"
+              />
+            );
+          })}
       </div>
       {/* Colonne des heures */}
       <div className="row-span-1 grid grid-cols-[auto_1fr]">
@@ -59,7 +92,12 @@ export default function DayView({ events }: DayViewProps) {
           ))}
           <div className="absolute left-0 top-0 h-[calc(110vh/24)] w-full">
             {events
-              .filter((events) => !events.allDay && new Date(events.start).toDateString() === currentDate.toDateString())
+              .filter(
+                (events) =>
+                  !events.allDay &&
+                  new Date(events.start).toDateString() ===
+                    currentDate.toDateString()
+              )
               .map((event) => (
                 <EventCard key={event.id} event={event} view="day" />
               ))}
