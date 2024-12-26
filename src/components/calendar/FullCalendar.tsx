@@ -4,6 +4,7 @@ import WeekView from "./WeekView";
 import MonthView from "./MonthView";
 import { Event } from "@/utils/types";
 import { Button } from "@/components/ui/button";
+import { preprocessEvents, groupOverlappingEvents} from "@/utils/eventUtils";
 
 export default function FullCalendar() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -13,73 +14,19 @@ export default function FullCalendar() {
   useEffect(() => {
     fetch("/events.json")
       .then((res) => res.json())
-      .then((data) => setEvents(data))
+      .then((data) => {
+        const processedEvents = preprocessEvents(data);
+        setEvents(processedEvents);
+      })
       .catch((err) => console.error("Erreur de chargement :", err));
   }, []);
-
-  // Fonction pour détecter les chevauchements
-  const groupOverlappingEvents = (events: Event[]): Event[] => {
-    
-    const sortedEvents = [...events].sort(
-      (a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()
-    );
-
-    const groups: Event[][] = [];
-    const enrichedEvents: Event[] = [];
-
-    sortedEvents.forEach((event) => {
-
-      // Exclure les événements "all day"
-      if (event.allDay) {
-        enrichedEvents.push({ ...event, groupIndex: 0, groupSize: 1 }); // Garde les événements "all day" sans chevauchement
-        return; // Passe à l'itération suivante
-      }
-
-      let addedToGroup = false;
-
-      for (const group of groups) {
-        if (group.some((e) => isOverlapping(e, event))) {
-          group.push(event);
-          addedToGroup = true;
-          break;
-        }
-      }
-
-      if (!addedToGroup) {
-        groups.push([event]);
-      }
-    });
-
-    // Enrichir chaque événement avec groupIndex et groupSize
-    groups.forEach((group) => {
-      const groupSize = group.length;
-      group.forEach((event, indexInGroup) => {
-        enrichedEvents.push({
-          ...event,
-          groupIndex: indexInGroup,
-          groupSize: groupSize,
-        });
-      });
-    });
-
-    return enrichedEvents;
-  };
-
-  // Fonction de détection de chevauchements
-  const isOverlapping = (event1: Event, event2: Event): boolean => {
-    const start1 = new Date(event1.start).getTime();
-    const end1 = new Date(event1.end).getTime();
-    const start2 = new Date(event2.start).getTime();
-    const end2 = new Date(event2.end).getTime();
-
-    return start1 < end2 && start2 < end1;
-  };
 
   // Pré-calcul des chevauchements avec useMemo
   const enrichedEvents = useMemo(
     () => groupOverlappingEvents(events),
     [events]
   );
+  console.log("Événements enrichis :", enrichedEvents);
 
   // Sélection de la vue
   const renderView = () => {

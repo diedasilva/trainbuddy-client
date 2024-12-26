@@ -71,7 +71,6 @@ export default function MonthView({ events }: MonthViewProps) {
                   key={event.id}
                   event={event}
                   view="month"
-                  type="simple"
                 />
               ))}
           </div>

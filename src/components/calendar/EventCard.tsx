@@ -1,46 +1,16 @@
 import React from "react";
-import { Event } from "@/utils/types";
+import { ChildEvent, Event } from "@/utils/types";
 import SheetEventCard from "./SheetEventCard";
 
-type EventCardProps = {
-  event: Event;
+
+interface EventCardProps {
+  event: Event | ChildEvent;
   view: "day" | "week" | "month";
-  type?: "simple";
-};
+  parentEvent?: Event; // Ajoutez cette prop
+}
 
-export default function EventCard({ event, view, type }: EventCardProps) {
-  // Init dates
-  const start = new Date(event.start);
-  const end = new Date(event.end);
-
-  // Top and height
-  const top =
-    view === "day"
-      ? (start.getHours() + start.getMinutes() / 60) * 100
-      : (start.getMinutes() / 60) * 100;
-  const height = ((end.getTime() - start.getTime()) / 3600000) * 100;
-
-  // Check if event is all day
-  const isAllDay = event.allDay === true;
-
-  // Width and left
-  const width = isAllDay ? 20 : event.groupSize ? 100 / event.groupSize : 100;
-  const left = isAllDay
-    ? 0
-    : event.groupIndex != null
-      ? event.groupIndex * width
-      : 0;
-
-  //
-  const verticalTextStyle =
-    (event.groupSize ?? 1) > 1 && view === "week"
-      ? {
-          writingMode: "vertical-rl",
-          textOrientation: "mixed",
-          whiteSpace: "nowrap",
-        }
-      : null;
-
+export default function EventCard({ event, view, parentEvent }: EventCardProps) {
+  // Gestion des couleurs
   const colors = [
     "bg-cyan-700",
     "bg-teal-500",
@@ -52,45 +22,84 @@ export default function EventCard({ event, view, type }: EventCardProps) {
   const backgroundColor =
     colors[event.groupIndex != null ? event.groupIndex % colors.length : 0];
 
-  if (type === "simple") {
-    const triggerDiv =
-      view === "day" ? (
-        <span
-          className={`mx-1 rounded p-1 text-xs text-white ${backgroundColor}`}
-        >
-          {event.title}
-        </span>
-      ) : (
-        <div
-          className={`my-1 rounded p-1 text-xs text-white ${backgroundColor}`}
-        >
-          {event.title}
-        </div>
-      );
-    return <SheetEventCard eventData={event} trigger={triggerDiv} />;
-  }
-  const triggerDiv = (
-    <div
-      className={`absolute rounded p-1 text-xs text-white ${backgroundColor}`}
-      style={
-        {
-          top: isAllDay ? "0%" : `${top}%`,
-          height: isAllDay ? "auto" : `${height}%`,
-          left: `${left}%`,
-          width: `${width}%`,
-          zIndex: isAllDay ? 10 : 1,
-          ...(verticalTextStyle || {}),
-        } as React.CSSProperties
-      }
-    >
-      {event.title} : <br />
-      {start.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })} to{" "}
-      {end.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-    </div>
-  );
+  // Calcul des styles pour positionner l'événement
+  const calculateStyles = (evt: Event) => {
+    const start = new Date(evt.start);
+    const end = new Date(evt.end);
+    const top =
+      view === "day"
+        ? (start.getHours() + start.getMinutes() / 60) * 100
+        : (start.getMinutes() / 60) * 100;
+    const height = ((end.getTime() - start.getTime()) / 3600000) * 8;
+    const isAllDay = evt.allDay === true;
+    const width = isAllDay ? 20 : evt.groupSize ? 100 / evt.groupSize : 100;
+    const left = isAllDay
+      ? 0
+      : evt.groupIndex != null
+      ? evt.groupIndex * width
+      : 0;
+    const verticalTextStyle =
+      (evt.groupSize ?? 1) > 1 && view === "week"
+        ? {
+            writingMode: "vertical-rl",
+            textOrientation: "mixed",
+            whiteSpace: "nowrap",
+          }
+        : null;
 
-  return <SheetEventCard eventData={event} trigger={triggerDiv} />;
+    return {
+      top: `${top}%`,
+      height: `${height}vh`,
+      left: `${left}%`,
+      width: `${width}%`,
+      zIndex: isAllDay ? 10 : 1,
+      ...(verticalTextStyle || {}),
+    };
+  };
+
+  const styles = calculateStyles(event);
+
+  const renderEventTrigger = (evt: Event) => {
+    if(parentEvent){
+      evt.title = parentEvent.title;
+    }
+
+    if (evt.allDay) {
+      const triggerDiv =
+        view === "day" ? (
+          <span
+            className={`mx-1 rounded p-1 text-xs text-white ${backgroundColor}`}
+          >
+            {evt.title}
+          </span>
+        ) : (
+          <div
+            className={`my-1 rounded p-1 text-xs text-white ${backgroundColor}`}
+          >
+            {evt.title}
+          </div>
+        );
+      return <SheetEventCard key={evt.id} eventData={evt} trigger={triggerDiv} parentEvent={parentEvent} />;
+    }
+
+    const triggerDiv = (
+      <div
+        className={`absolute rounded p-1 text-xs text-white ${backgroundColor}`}
+        style={styles as React.CSSProperties}
+      >
+        {evt.title} : <br />
+        {new Date(evt.start).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
+        {" "}to {new Date(evt.end).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
+      </div>
+    );
+    return <SheetEventCard key={evt.id} eventData={evt} trigger={triggerDiv} parentEvent={parentEvent} />;
+  };
+  
+  return renderEventTrigger(event);
 }

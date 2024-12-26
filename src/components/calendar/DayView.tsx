@@ -65,7 +65,6 @@ export default function DayView({ events }: DayViewProps) {
                 key={event.id}
                 event={event}
                 view="day"
-                type="simple"
               />
             );
           })}
