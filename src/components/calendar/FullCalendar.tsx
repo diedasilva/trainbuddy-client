@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import DayView from "./DayView";
 import WeekView from "./WeekView";
 import MonthView from "./MonthView";
+import PopoverCreateEvent from "./PopoverCreateEvent";
 import { Event } from "@/utils/types";
 import { Button } from "@/components/ui/button";
 import { preprocessEvents, groupOverlappingEvents} from "@/utils/eventUtils";
@@ -47,7 +48,10 @@ export default function FullCalendar() {
       <div className="w-4/5 rounded-lg">
         {/* Barre de navigation */}
         <div className="sticky top-0 z-10 mb-4 flex items-center justify-between bg-white p-4 shadow-sm">
-          <h2 className="text-xl font-bold">Calendrier</h2>
+          <div>
+            <h2 className="text-xl font-bold">Calendrier</h2>
+            <PopoverCreateEvent />
+          </div>
           <div className="flex space-x-2">
             <Button onClick={() => setView("day")}>Journée</Button>
             <Button onClick={() => setView("week")}>Semaine</Button>

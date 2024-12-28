@@ -53,13 +53,25 @@ export default function SheetEventCard({
     return eventData.end ? new Date(eventData.end) : new Date();
   });
   
+  const handleStartDateChange = (date: Date | undefined) => {
+    if (date) {
+      setStart(date);
+    }
+  };
+  
+  const handleEndDateChange = (date: Date | undefined) => {
+    if (date) {
+      setEnd(date);
+    }
+  };
+
   if (!eventData) return null; // Évite de rendre la Sheet sans données
   
   const allDay = parentEvent?.allDay || eventData.allDay;
   //console.log("parentEvent",parentEvent);
   //console.log(start, end);
 
-  const handleSave = () => {
+/*   const handleSave = () => {
     // Préparer les données à mettre à jour
     const updatedEvent = {
       ...eventData,
@@ -81,7 +93,7 @@ export default function SheetEventCard({
       // Sinon, mettez à jour directement l'événement
       //updateEvent(updatedEvent);
     }
-  };
+  }; */
 
   return (
     <Sheet>
@@ -128,14 +140,14 @@ export default function SheetEventCard({
                   <Calendar
                     mode="single"
                     selected={start}
-                    onSelect={setStart}
+                    onSelect={handleStartDateChange}
                     locale={fr}
                     initialFocus
                   />
                   {/* TimePicker only if allDay = false*/}
                   {!allDay && !parentEvent && (
                     <div className="border-t border-border p-3">
-                      <TimePicker setDate={setStart} date={start} />
+                      <TimePicker setDate={handleStartDateChange} date={start} />
                     </div>
                   )}
                 </PopoverContent>
@@ -174,14 +186,14 @@ export default function SheetEventCard({
                   <Calendar
                     mode="single"
                     selected={end}
-                    onSelect={setEnd}
+                    onSelect={handleEndDateChange}
                     locale={fr}
                     initialFocus
                   />
                   {/* TimePicker only if allDay = false*/}
                   {!allDay && !parentEvent && (
                     <div className="border-t border-border p-3">
-                      <TimePicker setDate={setEnd} date={end} />
+                      <TimePicker setDate={handleEndDateChange} date={end} />
                     </div>
                   )}
                 </PopoverContent>

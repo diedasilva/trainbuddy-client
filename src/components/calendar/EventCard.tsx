@@ -64,7 +64,7 @@ export default function EventCard({ event, view, parentEvent }: EventCardProps) 
       evt.title = parentEvent.title;
     }
 
-    if (evt.allDay) {
+    if (evt.allDay || view ==="month") {
       const triggerDiv =
         view === "day" ? (
           <span

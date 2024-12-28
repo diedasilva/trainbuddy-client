@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import EventCard from "./EventCard";
-import { Event } from "@/utils/types";
+import { ChildEvent, Event } from "@/utils/types";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 
@@ -32,6 +32,11 @@ export default function DayView({ events }: DayViewProps) {
     });
   };
 
+  // Fonction pour trouver l'événement parent
+  const findParent = (parentId: string): Event | undefined => {
+    return events.find((event) => event.id === parentId);
+  };
+
   return (
     <div className="grid-row-2 relative grid">
       {/* En-tête et navigation */}
@@ -53,6 +58,11 @@ export default function DayView({ events }: DayViewProps) {
       {/* Event All-day*/}
       <div className="col-span-1 row-span-1 border-b p-2">
         {events
+          .flatMap((event) =>
+            event.children && event.children.length > 0
+              ? event.children
+              : [event as ChildEvent]
+          )
           .filter(
             (event) =>
               event.allDay &&
@@ -60,11 +70,16 @@ export default function DayView({ events }: DayViewProps) {
                 currentDate.toDateString()
           )
           .map((event) => {
+            const parentEvent =
+              "parentId" in event && event.parentId
+                ? findParent(event.parentId.toString())
+                : undefined;
             return (
               <EventCard
                 key={event.id}
                 event={event}
                 view="day"
+                parentEvent={parentEvent}
               />
             );
           })}
@@ -91,15 +106,31 @@ export default function DayView({ events }: DayViewProps) {
           ))}
           <div className="absolute left-0 top-0 h-[calc(110vh/24)] w-full">
             {events
+              .flatMap((event) =>
+                event.children && event.children.length > 0
+                  ? event.children
+                  : [event as ChildEvent]
+              )
               .filter(
                 (events) =>
                   !events.allDay &&
                   new Date(events.start).toDateString() ===
                     currentDate.toDateString()
               )
-              .map((event) => (
-                <EventCard key={event.id} event={event} view="day" />
-              ))}
+              .map((event) => {
+                const parentEvent =
+                  "parentId" in event && event.parentId
+                    ? findParent(event.parentId.toString())
+                    : undefined;
+                return (
+                  <EventCard
+                    key={event.id}
+                    event={event}
+                    view="day"
+                    parentEvent={parentEvent}
+                  />
+                );
+              })}
           </div>
         </div>
       </div>

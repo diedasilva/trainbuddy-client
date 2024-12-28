@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Event } from "@/utils/types";
+import { ChildEvent, Event } from "@/utils/types";
 import EventCard from "./EventCard";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ChevronLeft } from "lucide-react";
@@ -38,6 +38,11 @@ export default function MonthView({ events }: MonthViewProps) {
     (_, i) => new Date(currentDate.getFullYear(), currentDate.getMonth(), i + 1)
   );
 
+  // Fonction pour trouver l'événement parent
+  const findParent = (parentId: string): Event | undefined => {
+    return events.find((event) => event.id === parentId);
+  };
+
   return (
     <div className="grid-row-2 relative grid shadow-md">
       <div className="col-span-1 row-span-1 flex justify-between border-b p-2">
@@ -62,17 +67,29 @@ export default function MonthView({ events }: MonthViewProps) {
           >
             <div className="font-bold">{day.getDate()}</div>
             {events
+              .flatMap((event) =>
+                event.children && event.children.length > 0
+                  ? event.children
+                  : [event as ChildEvent]
+              )
               .filter(
                 (event) =>
                   new Date(event.start).toDateString() === day.toDateString()
               )
-              .map((event) => (
-                <EventCard
-                  key={event.id}
-                  event={event}
-                  view="month"
-                />
-              ))}
+              .map((event) => {
+                const parentEvent =
+                  "parentId" in event && event.parentId
+                    ? findParent(event.parentId.toString())
+                    : undefined;
+                return (
+                  <EventCard
+                    key={event.id}
+                    event={event}
+                    view="month"
+                    parentEvent={parentEvent}
+                  />
+                );
+              })}
           </div>
         ))}
       </div>
