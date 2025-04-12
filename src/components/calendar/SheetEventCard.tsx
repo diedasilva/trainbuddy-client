@@ -38,7 +38,6 @@ export default function SheetEventCard({
   trigger,
   parentEvent,
 }: SheetEventCardProps) {
-
   const [start, setStart] = useState(() => {
     if (parentEvent) {
       return new Date(parentEvent.start);
@@ -52,13 +51,13 @@ export default function SheetEventCard({
     }
     return eventData.end ? new Date(eventData.end) : new Date();
   });
-  
+
   const handleStartDateChange = (date: Date | undefined) => {
     if (date) {
       setStart(date);
     }
   };
-  
+
   const handleEndDateChange = (date: Date | undefined) => {
     if (date) {
       setEnd(date);
@@ -66,12 +65,12 @@ export default function SheetEventCard({
   };
 
   if (!eventData) return null; // Évite de rendre la Sheet sans données
-  
+
   const allDay = parentEvent?.allDay || eventData.allDay;
   //console.log("parentEvent",parentEvent);
   //console.log(start, end);
 
-/*   const handleSave = () => {
+  /*   const handleSave = () => {
     // Préparer les données à mettre à jour
     const updatedEvent = {
       ...eventData,
@@ -145,9 +144,9 @@ export default function SheetEventCard({
                     initialFocus
                   />
                   {/* TimePicker only if allDay = false*/}
-                  {!allDay && !parentEvent && (
+                  {(!allDay || parentEvent) && (
                     <div className="border-t border-border p-3">
-                      <TimePicker setDate={handleStartDateChange} date={start} />
+                      <TimePicker setDate={handleStartDateChange} date={end} />
                     </div>
                   )}
                 </PopoverContent>
@@ -191,7 +190,7 @@ export default function SheetEventCard({
                     initialFocus
                   />
                   {/* TimePicker only if allDay = false*/}
-                  {!allDay && !parentEvent && (
+                  {(!allDay || parentEvent) && (
                     <div className="border-t border-border p-3">
                       <TimePicker setDate={handleEndDateChange} date={end} />
                     </div>
@@ -200,21 +199,26 @@ export default function SheetEventCard({
               </Popover>
             </div>
           </div>
-          {
-            !parentEvent && (
-              <div className="grid grid-cols-4 items-center gap-4">
+          {!parentEvent && (
+            <div className="grid grid-cols-4 items-center gap-4">
               <label className="col-span-1">AllDay:</label>
               <span className="col-span-3">
                 {eventData.allDay ? "Yes" : "No"}
               </span>
             </div>
-            )
-          }
+          )}
         </div>
-        <Input type="email" id="email" placeholder="Description" value={eventData.description} />
+        <Input
+          type="email"
+          id="email"
+          placeholder="Description"
+          value={eventData.description}
+        />
         <SheetFooter>
           <SheetClose asChild>
-            <Button type="submit" className="m-4">Save changes</Button>
+            <Button type="submit" className="m-4">
+              Save changes
+            </Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>

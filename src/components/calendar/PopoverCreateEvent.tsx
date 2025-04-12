@@ -68,7 +68,7 @@ export default function PopoverCreateEvent() {
     <div className={cn("grid gap-2", "grid-cols-1")}>
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline">Créer une session 🚀</Button>
+                <Button>Créer une session 🚀</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
