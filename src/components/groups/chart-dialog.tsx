@@ -17,7 +17,7 @@ interface ChartDialogProps {
   groupId: string;
   isEditing: boolean;
   editingChartIndex: number | null;
-  chartToEdit?: ChartItem | null;  // <-- nouveau
+  chartToEdit?: ChartItem | null;  
   onClose: () => void;
   onAddChart: (groupId: string, newChart: ChartItem) => void;
   onEditChart: (

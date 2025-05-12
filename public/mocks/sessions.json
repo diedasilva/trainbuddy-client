@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Match amical",
+    "location": "Court 3",
+    "type": "tennis",
+    "scheduledAt": "2025-05-20T18:00:00Z",
+    "createdBy": 2,
+    "groupId": 1,
+    "coachId": 2,
+    "status": "PLANNED",
+    "details": {},
+    "createdAt": "2025-05-01T09:00:00Z",
+    "updatedAt": "2025-05-01T09:00:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Yoga matin",
+    "location": "Studio A",
+    "type": "yoga",
+    "scheduledAt": "2025-05-22T07:30:00Z",
+    "createdBy": 1,
+    "groupId": 2,
+    "coachId": null,
+    "status": "PLANNED",
+    "details": {},
+    "createdAt": "2025-05-02T11:00:00Z",
+    "updatedAt": "2025-05-02T11:00:00Z"
+  }
+]

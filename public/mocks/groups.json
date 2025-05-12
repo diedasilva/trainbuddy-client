@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Tennis Club Paris",
+    "description": "Club amateur de tennis",
+    "privacy": "PUBLIC",
+    "createdBy": 2,
+    "createdAt": "2025-03-01T10:00:00Z",
+    "updatedAt": "2025-03-01T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "name": "Cours de Yoga",
+    "description": "Séance hebdo de yoga",
+    "privacy": "PRIVATE",
+    "createdBy": 1,
+    "createdAt": "2025-04-15T08:00:00Z",
+    "updatedAt": "2025-04-15T08:00:00Z"
+  },
+  {
+    "id": 3,
+    "name": "CrossFit Champs",
+    "description": "Entraînements CrossFit intenses",
+    "privacy": "PUBLIC",
+    "createdBy": 3,
+    "createdAt": "2025-02-20T07:30:00Z",
+    "updatedAt": "2025-02-20T07:30:00Z"
+  },
+  {
+    "id": 4,
+    "name": "Randonnée Montagne",
+    "description": "Groupe de passionnés de randonnée",
+    "privacy": "PUBLIC",
+    "createdBy": 4,
+    "createdAt": "2025-03-10T09:45:00Z",
+    "updatedAt": "2025-03-10T09:45:00Z"
+  },
+  {
+    "id": 5,
+    "name": "Natation Débutants",
+    "description": "Apprentissage de la nage pour débutants",
+    "privacy": "PRIVATE",
+    "createdBy": 5,
+    "createdAt": "2025-04-01T11:00:00Z",
+    "updatedAt": "2025-04-01T11:00:00Z"
+  },
+  {
+    "id": 6,
+    "name": "Football du Samedi",
+    "description": "Matchs amicaux chaque samedi",
+    "privacy": "PUBLIC",
+    "createdBy": 6,
+    "createdAt": "2025-03-25T17:00:00Z",
+    "updatedAt": "2025-03-25T17:00:00Z"
+  }
+]

@@ -1,0 +1,5 @@
+[
+  { "groupId": 1, "userId": 2, "role": "ADMIN", "joinedAt": "2025-03-01T10:00:00Z" },
+  { "groupId": 1, "userId": 1, "role": "MEMBER", "joinedAt": "2025-03-02T12:30:00Z" },
+  { "groupId": 2, "userId": 1, "role": "ADMIN", "joinedAt": "2025-04-15T08:00:00Z" }
+]

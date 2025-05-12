@@ -1,0 +1,5 @@
+[
+  { "sessionId": 1, "userId": 2, "status": "JOINED", "joinedAt": "2025-05-10T15:00:00Z" },
+  { "sessionId": 1, "userId": 1, "status": "INVITED", "joinedAt": "2025-05-10T15:05:00Z" },
+  { "sessionId": 2, "userId": 1, "status": "JOINED", "joinedAt": "2025-05-03T08:00:00Z" }
+]

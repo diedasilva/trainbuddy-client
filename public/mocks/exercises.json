@@ -1,0 +1,4 @@
+[
+  { "id": 1, "name": "Service Tennis", "activityType": "tennis", "defaultConf": {}, "createdAt": "2025-02-10T12:00:00Z" },
+  { "id": 2, "name": "Asanas",      "activityType": "yoga",   "defaultConf": {}, "createdAt": "2025-03-05T09:00:00Z" }
+]

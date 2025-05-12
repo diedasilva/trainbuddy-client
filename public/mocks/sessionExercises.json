@@ -1,0 +1,4 @@
+[
+  { "sessionId": 1, "exerciseId": 1, "seq": 1, "config": { "sets": 3, "reps": 15 } },
+  { "sessionId": 2, "exerciseId": 2, "seq": 1, "config": { "duration": 1800 } }
+]

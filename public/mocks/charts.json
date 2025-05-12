@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Historique Tennis",
+    "description": "Matchs joués par mois",
+    "userId": 2,
+    "groupId": null,
+    "config": {
+      "type": "bar",
+      "xAxis": "month",
+      "yAxis": "matchesPlayed"
+    },
+    "createdAt": "2025-05-05T10:00:00Z",
+    "updatedAt": "2025-05-05T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Présence Yoga",
+    "description": "",
+    "userId": null,
+    "groupId": 2,
+    "config": {
+      "type": "line",
+      "xAxis": "date",
+      "yAxis": "attendees"
+    },
+    "createdAt": "2025-05-06T14:00:00Z",
+    "updatedAt": "2025-05-06T14:00:00Z"
+  }
+]
