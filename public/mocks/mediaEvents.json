@@ -1,0 +1,158 @@
+[
+  {
+    "id": 1,
+    "title": "Conférence Fitness & Innovation 2026",
+    "description": "Découvrez les dernières innovations technologiques dans le monde du fitness et du bien-être.",
+    "type": "conference",
+    "category": "technology",
+    "startDate": "2026-03-15T09:00:00Z",
+    "endDate": "2026-03-16T18:00:00Z",
+    "location": "Palais des Congrès, Paris",
+    "organizer": "FitnessTech Association",
+    "imageUrl": "/images/media-events/fitness-conference.jpg",
+    "speakers": [
+      {
+        "id": 1,
+        "name": "Dr. Sarah Johnson",
+        "title": "Directrice R&D, FitTech Solutions",
+        "topic": "L'IA dans le fitness personnalisé"
+      },
+      {
+        "id": 2,
+        "name": "Marc Dubois",
+        "title": "CEO, WellnessApp",
+        "topic": "L'avenir des applications fitness"
+      }
+    ],
+    "attendees": 450,
+    "maxAttendees": 500,
+    "price": 150,
+    "status": "registration_open",
+    "tags": ["innovation", "technologie", "fitness", "bien-être"]
+  },
+  {
+    "id": 2,
+    "title": "Webinar Nutrition Sportive",
+    "description": "Apprenez les bases de la nutrition pour optimiser vos performances sportives.",
+    "type": "webinar",
+    "category": "education",
+    "startDate": "2026-02-20T19:00:00Z",
+    "endDate": "2026-02-20T21:00:00Z",
+    "location": "En ligne",
+    "organizer": "SportNutrition Academy",
+    "imageUrl": "/images/media-events/nutrition-webinar.jpg",
+    "speakers": [
+      {
+        "id": 3,
+        "name": "Claire Moreau",
+        "title": "Nutritionniste Sportive",
+        "topic": "Les fondamentaux de la nutrition sportive"
+      }
+    ],
+    "attendees": 1200,
+    "maxAttendees": 2000,
+    "price": 0,
+    "status": "registration_open",
+    "tags": ["nutrition", "sport", "éducation", "gratuit"]
+  },
+  {
+    "id": 3,
+    "title": "Podcast : Les Champions du Fitness",
+    "description": "Écoutez les histoires inspirantes de champions du fitness et leurs conseils.",
+    "type": "podcast",
+    "category": "inspiration",
+    "startDate": "2026-01-25T18:00:00Z",
+    "endDate": "2026-01-25T19:00:00Z",
+    "location": "Studio Radio Fitness",
+    "organizer": "Fitness Radio",
+    "imageUrl": "/images/media-events/fitness-podcast.jpg",
+    "speakers": [
+      {
+        "id": 4,
+        "name": "Thomas Martin",
+        "title": "Coach Champion de France",
+        "topic": "Mon parcours vers le succès"
+      }
+    ],
+    "attendees": 0,
+    "maxAttendees": 0,
+    "price": 0,
+    "status": "live",
+    "tags": ["podcast", "inspiration", "champions", "motivation"]
+  },
+  {
+    "id": 4,
+    "title": "Workshop Yoga & Méditation",
+    "description": "Atelier pratique pour découvrir les bienfaits du yoga et de la méditation.",
+    "type": "workshop",
+    "category": "wellness",
+    "startDate": "2026-04-10T14:00:00Z",
+    "endDate": "2026-04-10T17:00:00Z",
+    "location": "Centre Zen, Lyon",
+    "organizer": "Zen Wellness Center",
+    "imageUrl": "/images/media-events/yoga-workshop.jpg",
+    "speakers": [
+      {
+        "id": 5,
+        "name": "Sophie Chen",
+        "title": "Instructrice Yoga certifiée",
+        "topic": "Yoga pour débutants"
+      }
+    ],
+    "attendees": 25,
+    "maxAttendees": 30,
+    "price": 45,
+    "status": "registration_open",
+    "tags": ["yoga", "méditation", "bien-être", "atelier"]
+  },
+  {
+    "id": 5,
+    "title": "Live Instagram : Entraînement HIIT",
+    "description": "Séance d'entraînement HIIT en direct sur Instagram avec un coach professionnel.",
+    "type": "live",
+    "category": "training",
+    "startDate": "2026-01-30T19:00:00Z",
+    "endDate": "2026-01-30T20:00:00Z",
+    "location": "Instagram Live",
+    "organizer": "FitLife Instagram",
+    "imageUrl": "/images/media-events/hiit-live.jpg",
+    "speakers": [
+      {
+        "id": 6,
+        "name": "Alex Rodriguez",
+        "title": "Coach HIIT certifié",
+        "topic": "Entraînement HIIT complet"
+      }
+    ],
+    "attendees": 0,
+    "maxAttendees": 0,
+    "price": 0,
+    "status": "upcoming",
+    "tags": ["live", "hiit", "entraînement", "instagram", "gratuit"]
+  },
+  {
+    "id": 6,
+    "title": "Documentaire : Les Secrets des Athlètes",
+    "description": "Documentaire exclusif sur les routines et secrets des athlètes de haut niveau.",
+    "type": "documentary",
+    "category": "inspiration",
+    "startDate": "2026-05-01T20:00:00Z",
+    "endDate": "2026-05-01T22:00:00Z",
+    "location": "Cinéma Sport, Paris",
+    "organizer": "Sport Documentary Films",
+    "imageUrl": "/images/media-events/athletes-documentary.jpg",
+    "speakers": [
+      {
+        "id": 7,
+        "name": "Marie Dubois",
+        "title": "Réalisatrice",
+        "topic": "Les coulisses du documentaire"
+      }
+    ],
+    "attendees": 200,
+    "maxAttendees": 250,
+    "price": 12,
+    "status": "registration_open",
+    "tags": ["documentaire", "athlètes", "inspiration", "cinéma"]
+  }
+] 

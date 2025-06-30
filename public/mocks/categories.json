@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "name": "Toutes",
+    "slug": "all",
+    "icon": "Activity",
+    "description": "Toutes les activités disponibles",
+    "color": "primary",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "name": "Plein air",
+    "slug": "outdoor",
+    "icon": "Heart",
+    "description": "Activités en extérieur et nature",
+    "color": "green",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": 3,
+    "name": "En salle",
+    "slug": "indoor",
+    "icon": "Target",
+    "description": "Activités en salle et fitness",
+    "color": "blue",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": 4,
+    "name": "Aquatique",
+    "slug": "water",
+    "icon": "Zap",
+    "description": "Activités aquatiques et nautiques",
+    "color": "cyan",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": 5,
+    "name": "Équipe",
+    "slug": "team",
+    "icon": "Users",
+    "description": "Sports d'équipe et collectifs",
+    "color": "orange",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": 6,
+    "name": "Combat",
+    "slug": "combat",
+    "icon": "Shield",
+    "description": "Arts martiaux et sports de combat",
+    "color": "red",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": 7,
+    "name": "Danse",
+    "slug": "dance",
+    "icon": "Music",
+    "description": "Danse et expression corporelle",
+    "color": "purple",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": 8,
+    "name": "Yoga",
+    "slug": "yoga",
+    "icon": "Sun",
+    "description": "Yoga et bien-être",
+    "color": "yellow",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  }
+] 

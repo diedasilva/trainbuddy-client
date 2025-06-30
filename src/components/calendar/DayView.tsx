@@ -88,7 +88,7 @@ export default function DayView({ events }: DayViewProps) {
       <div className="row-span-1 grid grid-cols-[auto_1fr]">
         <div className="border-r">
           {hours.map((hour, index) => (
-            <div key={index} className="relative h-[calc(110vh/24)]">
+            <div key={index} className="relative h-[calc(100vh/24)]">
               <div className="absolute right-0 top-0 translate-y-[-50%] p-2 text-right">
                 {hour}
               </div>
@@ -101,10 +101,10 @@ export default function DayView({ events }: DayViewProps) {
           {hours.map((_, index) => (
             <div
               key={index}
-              className="relative h-[calc(110vh/24)] border-b border-r"
+              className="relative h-[calc(100vh/24)] border-b border-r"
             ></div>
           ))}
-          <div className="absolute left-0 top-0 h-[calc(110vh/24)] w-full">
+          <div className="absolute left-0 top-0 h-full w-full">
             {events
               .flatMap((event) =>
                 event.children && event.children.length > 0

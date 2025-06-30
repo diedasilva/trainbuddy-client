@@ -2,55 +2,257 @@
   {
     "id": 1,
     "name": "Tennis Club Paris",
-    "description": "Club amateur de tennis",
+    "description": "Club amateur de tennis pour tous niveaux",
+    "status": "public",
+    "category": "Tennis",
     "privacy": "PUBLIC",
+    "admin": "bertrand",
+    "moderators": ["alice"],
+    "members": [
+      {
+        "id": 2,
+        "name": "bertrand",
+        "score": 1250,
+        "role": "admin",
+        "joinDate": "2025-03-01",
+        "lastActive": "2025-03-01T10:00:00Z"
+      },
+      {
+        "id": 1,
+        "name": "alice",
+        "score": 980,
+        "role": "moderator",
+        "joinDate": "2025-03-02",
+        "lastActive": "2025-03-01T12:30:00Z"
+      }
+    ],
+    "workoutCount": 45,
+    "totalMembers": 45,
+    "activeMembers": 32,
+    "lastActivity": "2 hours ago",
     "createdBy": 2,
     "createdAt": "2025-03-01T10:00:00Z",
-    "updatedAt": "2025-03-01T10:00:00Z"
+    "updatedAt": "2025-03-01T10:00:00Z",
+    "avatarUrl": "/images/groups/tennis.jpg",
+    "coverUrl": "/images/groups/tennis-cover.jpg",
+    "stats": {
+      "totalWorkouts": 156,
+      "totalCalories": 12450,
+      "averageRating": 4.8,
+      "completionRate": 85
+    },
+    "joinRequests": 2,
+    "achievements": ["Top groupe du mois", "50 matchs joués"]
   },
   {
     "id": 2,
     "name": "Cours de Yoga",
-    "description": "Séance hebdo de yoga",
+    "description": "Séance hebdomadaire de yoga pour tous niveaux",
+    "status": "private",
+    "category": "Yoga",
     "privacy": "PRIVATE",
+    "admin": "alice",
+    "moderators": [],
+    "members": [
+      {
+        "id": 1,
+        "name": "alice",
+        "score": 750,
+        "role": "admin",
+        "joinDate": "2025-04-15",
+        "lastActive": "2025-04-15T08:00:00Z"
+      }
+    ],
+    "workoutCount": 28,
+    "totalMembers": 28,
+    "activeMembers": 25,
+    "lastActivity": "1 day ago",
     "createdBy": 1,
     "createdAt": "2025-04-15T08:00:00Z",
-    "updatedAt": "2025-04-15T08:00:00Z"
+    "updatedAt": "2025-04-15T08:00:00Z",
+    "avatarUrl": "/images/groups/yoga.jpg",
+    "coverUrl": "/images/groups/yoga-cover.jpg",
+    "stats": {
+      "totalWorkouts": 89,
+      "totalCalories": 8900,
+      "averageRating": 4.7,
+      "completionRate": 92
+    },
+    "joinRequests": 1,
+    "achievements": ["Groupe bienveillant", "30 séances yoga"]
   },
   {
     "id": 3,
     "name": "CrossFit Champs",
-    "description": "Entraînements CrossFit intenses",
+    "description": "Entraînements CrossFit intenses pour athlètes confirmés",
+    "status": "public",
+    "category": "CrossFit",
     "privacy": "PUBLIC",
+    "admin": "charlotte",
+    "moderators": ["bertrand"],
+    "members": [
+      {
+        "id": 3,
+        "name": "charlotte",
+        "score": 2100,
+        "role": "admin",
+        "joinDate": "2025-02-20",
+        "lastActive": "2025-02-20T07:30:00Z"
+      },
+      {
+        "id": 2,
+        "name": "bertrand",
+        "score": 1800,
+        "role": "moderator",
+        "joinDate": "2025-02-21",
+        "lastActive": "2025-02-20T18:00:00Z"
+      }
+    ],
+    "workoutCount": 67,
+    "totalMembers": 67,
+    "activeMembers": 58,
+    "lastActivity": "3 hours ago",
     "createdBy": 3,
     "createdAt": "2025-02-20T07:30:00Z",
-    "updatedAt": "2025-02-20T07:30:00Z"
+    "updatedAt": "2025-02-20T07:30:00Z",
+    "avatarUrl": "/images/groups/crossfit.jpg",
+    "coverUrl": "/images/groups/crossfit-cover.jpg",
+    "stats": {
+      "totalWorkouts": 234,
+      "totalCalories": 18700,
+      "averageRating": 4.9,
+      "completionRate": 88
+    },
+    "joinRequests": 3,
+    "achievements": ["Challenge CrossFit gagné", "100 séances complétées"]
   },
   {
     "id": 4,
     "name": "Randonnée Montagne",
-    "description": "Groupe de passionnés de randonnée",
+    "description": "Groupe de passionnés de randonnée en montagne",
+    "status": "public",
+    "category": "Randonnée",
     "privacy": "PUBLIC",
+    "admin": "alice",
+    "moderators": ["charlotte"],
+    "members": [
+      {
+        "id": 1,
+        "name": "alice",
+        "score": 890,
+        "role": "admin",
+        "joinDate": "2025-03-10",
+        "lastActive": "2025-03-10T09:45:00Z"
+      },
+      {
+        "id": 3,
+        "name": "charlotte",
+        "score": 1200,
+        "role": "moderator",
+        "joinDate": "2025-03-11",
+        "lastActive": "2025-03-10T16:00:00Z"
+      }
+    ],
+    "workoutCount": 34,
+    "totalMembers": 34,
+    "activeMembers": 28,
+    "lastActivity": "5 hours ago",
     "createdBy": 4,
     "createdAt": "2025-03-10T09:45:00Z",
-    "updatedAt": "2025-03-10T09:45:00Z"
+    "updatedAt": "2025-03-10T09:45:00Z",
+    "avatarUrl": "/images/groups/randonnee.jpg",
+    "coverUrl": "/images/groups/randonnee-cover.jpg",
+    "stats": {
+      "totalWorkouts": 78,
+      "totalCalories": 15600,
+      "averageRating": 4.6,
+      "completionRate": 82
+    }
   },
   {
     "id": 5,
     "name": "Natation Débutants",
     "description": "Apprentissage de la nage pour débutants",
+    "status": "private",
+    "category": "Natation",
     "privacy": "PRIVATE",
+    "admin": "bertrand",
+    "moderators": [],
+    "members": [
+      {
+        "id": 2,
+        "name": "bertrand",
+        "score": 650,
+        "role": "admin",
+        "joinDate": "2025-04-01",
+        "lastActive": "2025-04-01T11:00:00Z"
+      }
+    ],
+    "workoutCount": 12,
+    "totalMembers": 12,
+    "activeMembers": 10,
+    "lastActivity": "1 week ago",
     "createdBy": 5,
     "createdAt": "2025-04-01T11:00:00Z",
-    "updatedAt": "2025-04-01T11:00:00Z"
+    "updatedAt": "2025-04-01T11:00:00Z",
+    "avatarUrl": "/images/groups/natation.jpg",
+    "coverUrl": "/images/groups/natation-cover.jpg",
+    "stats": {
+      "totalWorkouts": 45,
+      "totalCalories": 5600,
+      "averageRating": 4.5,
+      "completionRate": 78
+    }
   },
   {
     "id": 6,
     "name": "Football du Samedi",
-    "description": "Matchs amicaux chaque samedi",
+    "description": "Matchs amicaux chaque samedi matin",
+    "status": "public",
+    "category": "Football",
     "privacy": "PUBLIC",
+    "admin": "charlotte",
+    "moderators": ["alice", "bertrand"],
+    "members": [
+      {
+        "id": 3,
+        "name": "charlotte",
+        "score": 1100,
+        "role": "admin",
+        "joinDate": "2025-03-25",
+        "lastActive": "2025-03-25T17:00:00Z"
+      },
+      {
+        "id": 1,
+        "name": "alice",
+        "score": 950,
+        "role": "moderator",
+        "joinDate": "2025-03-26",
+        "lastActive": "2025-03-25T12:00:00Z"
+      },
+      {
+        "id": 2,
+        "name": "bertrand",
+        "score": 1200,
+        "role": "moderator",
+        "joinDate": "2025-03-27",
+        "lastActive": "2025-03-25T14:30:00Z"
+      }
+    ],
+    "workoutCount": 23,
+    "totalMembers": 23,
+    "activeMembers": 20,
+    "lastActivity": "2 days ago",
     "createdBy": 6,
     "createdAt": "2025-03-25T17:00:00Z",
-    "updatedAt": "2025-03-25T17:00:00Z"
+    "updatedAt": "2025-03-25T17:00:00Z",
+    "avatarUrl": "/images/groups/football.jpg",
+    "coverUrl": "/images/groups/football-cover.jpg",
+    "stats": {
+      "totalWorkouts": 67,
+      "totalCalories": 8900,
+      "averageRating": 4.7,
+      "completionRate": 85
+    }
   }
 ]

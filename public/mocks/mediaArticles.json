@@ -1,0 +1,46 @@
+[
+  {
+    "title": "Analyse tactique du dernier match",
+    "author": "Jean Dupont",
+    "readTime": "8 min",
+    "views": 15420,
+    "likes": 234,
+    "category": "Analyse",
+    "published": "Il y a 2h",
+    "excerpt": "Découvrez les stratégies qui ont mené à la victoire dans ce match décisif...",
+    "tags": ["Football", "Analyse", "Tactique"]
+  },
+  {
+    "title": "Nutrition : conseils d'experts pour la performance",
+    "author": "Dr. Marie Martin",
+    "readTime": "12 min",
+    "views": 8920,
+    "likes": 156,
+    "category": "Nutrition",
+    "published": "Il y a 5h",
+    "excerpt": "Les secrets nutritionnels des athlètes de haut niveau révélés par nos experts...",
+    "tags": ["Nutrition", "Performance", "Expert"]
+  },
+  {
+    "title": "Top 10 des moments sportifs 2025",
+    "author": "Pierre Sport",
+    "readTime": "15 min",
+    "views": 23450,
+    "likes": 445,
+    "category": "Rétrospective",
+    "published": "Il y a 1 jour",
+    "excerpt": "Revivez les moments les plus épiques de cette année sportive exceptionnelle...",
+    "tags": ["Rétrospective", "2025", "Moments"]
+  },
+  {
+    "title": "Techniques d'entraînement pour débutants",
+    "author": "Coach Sarah",
+    "readTime": "10 min",
+    "views": 12340,
+    "likes": 189,
+    "category": "Guide",
+    "published": "Il y a 2 jours",
+    "excerpt": "Un guide complet pour bien débuter votre parcours sportif...",
+    "tags": ["Débutant", "Guide", "Techniques"]
+  }
+] 

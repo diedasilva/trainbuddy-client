@@ -42,7 +42,7 @@ type ChartType = "bar" | "line" | "pie";
 
 interface ChartProps {
   type: ChartType;
-  data: { [key: string]: any }[];
+  data: Record<string, unknown>[];
   dataKey: string;
   title?: string;
   onDelete?: () => void;
@@ -155,16 +155,16 @@ export default function Chart({
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Confirm Deletion</AlertDialogTitle>
+                  <AlertDialogTitle>Confirmer la suppression</AlertDialogTitle>
                   <AlertDialogDescription>
-                    Are you sure you want to delete this chart? This action
-                    cannot be undone.
+                    Êtes-vous sûr de vouloir supprimer ce graphique ? Cette action
+                    ne peut pas être annulée.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogCancel>Annuler</AlertDialogCancel>
                   <AlertDialogAction onClick={onDelete}>
-                    Delete
+                    Supprimer
                   </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>

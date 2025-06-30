@@ -1,17 +1,50 @@
-import { useQuery, useMutation, useQueryClient } from 'react-query';
-import { apiGet, apiPost } from '@/lib/api';
+import { useEffect, useState } from 'react';
 import type { Exercise, SessionExercise } from '@/types/types';
+import { getExercises } from '@/lib/api/exercisesApi';
+import { getSessionExercisesBySessionId } from '@/lib/api/sessionExercisesApi';
 
-export const useExercises = (activityType: string) =>
-  useQuery<Exercise[]>(['exercises', activityType], () => apiGet<Exercise[]>('/exercises', { activityType }));
+export function useExercises(activityType?: string) {
+  const [exercises, setExercises] = useState<Exercise[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-export const useSessionExercises = (sessionId: number) =>
-  useQuery<SessionExercise[]>(['sessionExercises', sessionId], () => apiGet<SessionExercise[]>(`/sessions/${sessionId}/exercises`));
+  useEffect(() => {
+    setLoading(true);
+    getExercises()
+      .then((data) => {
+        let filtered = data;
+        if (activityType) filtered = filtered.filter((e: Exercise) => e.activityType === activityType);
+        setExercises(filtered);
+        setError(null);
+      })
+      .catch(() => {
+        setError('Failed to load exercises');
+        setExercises([]);
+      })
+      .finally(() => setLoading(false));
+  }, [activityType]);
 
-export const useAddSessionExercise = (sessionId: number) => {
-  const qc = useQueryClient();
-  return useMutation(
-    (data: Partial<SessionExercise>) => apiPost<SessionExercise>(`/sessions/${sessionId}/exercises`, data),
-    { onSuccess: () => qc.invalidateQueries(['sessionExercises', sessionId]) }
-  );
-};
+  return { exercises, loading, error };
+}
+
+export function useSessionExercises(sessionId: number) {
+  const [sessionExercises, setSessionExercises] = useState<SessionExercise[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    getSessionExercisesBySessionId(sessionId)
+      .then((data) => {
+        setSessionExercises(data);
+        setError(null);
+      })
+      .catch(() => {
+        setError('Failed to load session exercises');
+        setSessionExercises([]);
+      })
+      .finally(() => setLoading(false));
+  }, [sessionId]);
+
+  return { sessionExercises, loading, error };
+}

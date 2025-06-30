@@ -1,0 +1,13 @@
+[
+  { "name": "Jan", "offres": 45, "candidats": 120, "placements": 38 },
+  { "name": "Fév", "offres": 52, "candidats": 145, "placements": 44 },
+  { "name": "Mar", "offres": 61, "candidats": 168, "placements": 52 },
+  { "name": "Avr", "offres": 58, "candidats": 189, "placements": 49 },
+  { "name": "Mai", "offres": 67, "candidats": 210, "placements": 58 },
+  { "name": "Juin", "offres": 73, "candidats": 234, "placements": 65 },
+  { "name": "Juil", "offres": 82, "candidats": 267, "placements": 72 },
+  { "name": "Août", "offres": 89, "candidats": 298, "placements": 78 },
+  { "name": "Sep", "offres": 95, "candidats": 324, "placements": 85 },
+  { "name": "Oct", "offres": 102, "candidats": 356, "placements": 92 },
+  { "name": "Nov", "offres": 156, "candidats": 2847, "placements": 147 }
+] 

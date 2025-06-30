@@ -1,0 +1,47 @@
+[
+  {
+    "date": "25 Juin 2025",
+    "time": "20:00",
+    "event": "Finale Roland-Garros",
+    "channel": "France TV",
+    "duration": "3h",
+    "category": "Tennis",
+    "priority": "high"
+  },
+  {
+    "date": "01 Juil 2025",
+    "time": "14:30",
+    "event": "Tour de France étape 5",
+    "channel": "Eurosport",
+    "duration": "4h",
+    "category": "Cyclisme",
+    "priority": "medium"
+  },
+  {
+    "date": "03 Juil 2025",
+    "time": "21:00",
+    "event": "Match amical France-Italie",
+    "channel": "TF1",
+    "duration": "2h",
+    "category": "Football",
+    "priority": "high"
+  },
+  {
+    "date": "05 Juil 2025",
+    "time": "16:00",
+    "event": "Championnat d'athlétisme",
+    "channel": "L'Équipe",
+    "duration": "5h",
+    "category": "Athlétisme",
+    "priority": "medium"
+  },
+  {
+    "date": "08 Juil 2025",
+    "time": "19:30",
+    "event": "NBA Finals Game 7",
+    "channel": "Canal+",
+    "duration": "3h",
+    "category": "Basketball",
+    "priority": "high"
+  }
+] 

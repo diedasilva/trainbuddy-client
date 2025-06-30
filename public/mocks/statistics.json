@@ -1,0 +1,112 @@
+{
+  "global": {
+    "totalUsers": 1247,
+    "totalGroups": 89,
+    "totalSessions": 156,
+    "totalActivities": 45,
+    "totalForums": 24,
+    "activeGroups": 67,
+    "upcomingSessions": 23,
+    "totalCompetitions": 12,
+    "activeCompetitions": 5,
+    "totalHealthPrograms": 18,
+    "totalCareers": 34,
+    "totalMediaEvents": 8,
+    "upcomingMediaEvents": 3
+  },
+  "activities": {
+    "byCategory": {
+      "outdoor": 15,
+      "indoor": 12,
+      "water": 8,
+      "team": 6,
+      "combat": 4
+    },
+    "byDifficulty": {
+      "débutant": 18,
+      "intermédiaire": 15,
+      "avancé": 12
+    },
+    "popularActivities": [
+      {
+        "id": 1,
+        "title": "Course à pied",
+        "participants": 234,
+        "growth": 12.5
+      },
+      {
+        "id": 2,
+        "title": "Musculation",
+        "participants": 189,
+        "growth": 8.3
+      },
+      {
+        "id": 3,
+        "title": "Yoga",
+        "participants": 156,
+        "growth": 15.7
+      }
+    ]
+  },
+  "groups": {
+    "byStatus": {
+      "active": 67,
+      "inactive": 12,
+      "pending": 10
+    },
+    "byCategory": {
+      "fitness": 25,
+      "sport": 20,
+      "bien-être": 15,
+      "combat": 10,
+      "danse": 8,
+      "autre": 11
+    },
+    "averageMembers": 12.5,
+    "totalMembers": 1247
+  },
+  "sessions": {
+    "byType": {
+      "entraînement": 89,
+      "compétition": 23,
+      "initiation": 34,
+      "perfectionnement": 10
+    },
+    "byStatus": {
+      "scheduled": 23,
+      "completed": 89,
+      "cancelled": 12,
+      "ongoing": 32
+    },
+    "upcomingThisWeek": 15,
+    "upcomingThisMonth": 45
+  },
+  "users": {
+    "byRole": {
+      "CLIENT": 1100,
+      "COACH": 120,
+      "ADMIN": 27
+    },
+    "byStatus": {
+      "active": 1150,
+      "inactive": 97
+    },
+    "newThisMonth": 45,
+    "activeThisWeek": 234
+  },
+  "revenue": {
+    "monthly": 12500,
+    "growth": 8.5,
+    "byCategory": {
+      "subscriptions": 8500,
+      "events": 2500,
+      "programs": 1500
+    }
+  },
+  "engagement": {
+    "averageSessionDuration": 75,
+    "averageSessionsPerUser": 3.2,
+    "retentionRate": 78.5,
+    "satisfactionScore": 4.6
+  }
+} 

@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "title": "Coach Sportif Personnel",
+    "description": "Accompagnez des clients dans leur parcours fitness avec des programmes personnalisés.",
+    "category": "coaching",
+    "type": "full_time",
+    "location": "Paris, France",
+    "salary": "2500-3500€",
+    "experience": "2-5 ans",
+    "education": "Licence STAPS ou équivalent",
+    "company": "FitnessPro",
+    "postedDate": "2025-01-15T10:00:00Z",
+    "imageUrl": "/images/careers/personal-trainer.jpg",
+    "requirements": [
+      "Certification de coach sportif",
+      "Expérience en coaching individuel",
+      "Excellentes compétences relationnelles",
+      "Connaissance en nutrition",
+      "Disponibilité en soirée et week-end"
+    ],
+    "benefits": [
+      "Salaire attractif + commissions",
+      "Formation continue",
+      "Équipement fourni",
+      "Assurance santé",
+      "Évolutions de carrière"
+    ],
+    "responsibilities": [
+      "Créer des programmes d'entraînement personnalisés",
+      "Suivre les progrès des clients",
+      "Donner des conseils nutritionnels",
+      "Maintenir la motivation des clients",
+      "Participer aux événements de l'entreprise"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Nutritionniste Sportif",
+    "description": "Spécialisez-vous dans la nutrition sportive pour optimiser les performances des athlètes.",
+    "category": "nutrition",
+    "type": "part_time",
+    "location": "Lyon, France",
+    "salary": "3000-4500€",
+    "experience": "3-7 ans",
+    "education": "Master en Nutrition ou Diététique",
+    "company": "SportNutrition Plus",
+    "postedDate": "2025-01-12T14:30:00Z",
+    "imageUrl": "/images/careers/nutritionist.jpg",
+    "requirements": [
+      "Diplôme de nutritionniste",
+      "Spécialisation en nutrition sportive",
+      "Expérience avec des athlètes",
+      "Connaissance des suppléments",
+      "Capacité d'analyse et de suivi"
+    ],
+    "benefits": [
+      "Salaire compétitif",
+      "Horaires flexibles",
+      "Télétravail possible",
+      "Congés payés",
+      "Formation spécialisée"
+    ],
+    "responsibilities": [
+      "Élaborer des plans nutritionnels",
+      "Suivre les athlètes",
+      "Analyser les performances",
+      "Conseiller sur les suppléments",
+      "Former les équipes"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Physiothérapeute Sportif",
+    "description": "Rééduquez et prévenez les blessures sportives avec des techniques avancées.",
+    "category": "healthcare",
+    "type": "full_time",
+    "location": "Marseille, France",
+    "salary": "2800-4000€",
+    "experience": "1-3 ans",
+    "education": "Diplôme de Physiothérapeute",
+    "company": "Centre Médical Sportif",
+    "postedDate": "2025-01-10T09:15:00Z",
+    "imageUrl": "/images/careers/physiotherapist.jpg",
+    "requirements": [
+      "Diplôme de physiothérapeute",
+      "Spécialisation en sport",
+      "Connaissance des techniques de rééducation",
+      "Capacité d'écoute et d'empathie",
+      "Travail en équipe"
+    ],
+    "benefits": [
+      "Salaire attractif",
+      "Équipement moderne",
+      "Formation continue",
+      "Assurance complète",
+      "Évolutions possibles"
+    ],
+    "responsibilities": [
+      "Évaluer les blessures sportives",
+      "Élaborer des programmes de rééducation",
+      "Suivre les progrès",
+      "Prévenir les blessures",
+      "Collaborer avec les médecins"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Manager de Salle de Sport",
+    "description": "Gérez une salle de sport et son équipe pour offrir la meilleure expérience client.",
+    "category": "management",
+    "type": "full_time",
+    "location": "Bordeaux, France",
+    "salary": "3500-5000€",
+    "experience": "5-8 ans",
+    "education": "Master en Management ou équivalent",
+    "company": "FitLife Gyms",
+    "postedDate": "2025-01-08T16:45:00Z",
+    "imageUrl": "/images/careers/gym-manager.jpg",
+    "requirements": [
+      "Expérience en management",
+      "Connaissance du secteur fitness",
+      "Compétences commerciales",
+      "Gestion d'équipe",
+      "Excellente communication"
+    ],
+    "benefits": [
+      "Salaire élevé + bonus",
+      "Voiture de fonction",
+      "Assurance complète",
+      "Formation management",
+      "Évolutions rapides"
+    ],
+    "responsibilities": [
+      "Gérer l'équipe",
+      "Optimiser les ventes",
+      "Maintenir la qualité",
+      "Gérer le budget",
+      "Développer la clientèle"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Instructeur de Yoga",
+    "description": "Partagez votre passion du yoga en guidant des cours pour tous niveaux.",
+    "category": "wellness",
+    "type": "freelance",
+    "location": "Toulouse, France",
+    "salary": "25-40€/heure",
+    "experience": "1-3 ans",
+    "education": "Formation Yoga certifiée",
+    "company": "Zen Yoga Studio",
+    "postedDate": "2025-01-05T11:20:00Z",
+    "imageUrl": "/images/careers/yoga-instructor.jpg",
+    "requirements": [
+      "Certification Yoga",
+      "Expérience en enseignement",
+      "Connaissance des différentes pratiques",
+      "Bienveillance et patience",
+      "Disponibilité flexible"
+    ],
+    "benefits": [
+      "Horaires flexibles",
+      "Travail autonome",
+      "Évolution personnelle",
+      "Ambiance zen",
+      "Formation continue"
+    ],
+    "responsibilities": [
+      "Animer des cours de yoga",
+      "Adapter les postures",
+      "Créer une ambiance bienveillante",
+      "Suivre les progrès",
+      "Participer aux événements"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Développeur Web Fitness",
+    "description": "Créez des applications et sites web innovants pour le secteur du fitness.",
+    "category": "technology",
+    "type": "full_time",
+    "location": "Nantes, France",
+    "salary": "4000-6000€",
+    "experience": "3-6 ans",
+    "education": "Master en Informatique",
+    "company": "FitTech Solutions",
+    "postedDate": "2025-01-03T13:00:00Z",
+    "imageUrl": "/images/careers/web-developer.jpg",
+    "requirements": [
+      "Maîtrise React/Node.js",
+      "Expérience en développement web",
+      "Intérêt pour le fitness",
+      "Travail en équipe",
+      "Capacité d'innovation"
+    ],
+    "benefits": [
+      "Salaire très attractif",
+      "Télétravail possible",
+      "Équipement fourni",
+      "Formation tech",
+      "Stock-options"
+    ],
+    "responsibilities": [
+      "Développer des applications fitness",
+      "Optimiser les performances",
+      "Collaborer avec l'équipe",
+      "Maintenir le code",
+      "Innover constamment"
+    ]
+  }
+] 

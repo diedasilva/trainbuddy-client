@@ -1,0 +1,165 @@
+[
+  {
+    "id": 1,
+    "title": "Beach-volley",
+    "description": "Amusez-vous entre amis sur le sable avec cette activité conviviale et énergique.",
+    "category": "outdoor",
+    "difficulty": "Intermédiaire",
+    "duration": "1-2h",
+    "location": "Plages, terrains de sport",
+    "popularity": 4.8,
+    "participants": 45,
+    "href": "/activites/beach-volley",
+    "imageUrl": "/images/activities/beach-volley.jpg",
+    "groups": [
+      { "id": 1, "name": "Beach Volley Squad", "members": 8, "nextSession": "2024-12-28", "level": "Tous niveaux" },
+      { "id": 2, "name": "Volley Plage Pro", "members": 12, "nextSession": "2024-12-29", "level": "Avancé" }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Yoga en plein air",
+    "description": "Respirez profondément et trouvez votre équilibre intérieur dans un cadre naturel apaisant.",
+    "category": "yoga",
+    "difficulty": "Tous niveaux",
+    "duration": "1h",
+    "location": "Parcs, jardins",
+    "popularity": 4.9,
+    "participants": 78,
+    "href": "/activites/yoga",
+    "imageUrl": "/images/activities/yoga.jpg",
+    "groups": [
+      { "id": 3, "name": "Yoga Lovers", "members": 15, "nextSession": "2024-12-29", "level": "Débutant" },
+      { "id": 4, "name": "Zen Yoga Club", "members": 6, "nextSession": "2024-12-30", "level": "Avancé" }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Randonnée guidée",
+    "description": "Explorez de nouveaux sentiers et découvrez des paysages magnifiques en compagnie d'experts.",
+    "category": "outdoor",
+    "difficulty": "Facile",
+    "duration": "3-6h",
+    "location": "Montagnes, forêts",
+    "popularity": 4.7,
+    "participants": 32,
+    "href": "/activites/randonnee",
+    "imageUrl": "/images/activities/randonnee.jpg",
+    "groups": [
+      { "id": 5, "name": "Randonneurs Passionnés", "members": 20, "nextSession": "2024-12-31", "level": "Tous niveaux" }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Escalade en salle",
+    "description": "Développez votre force, agilité et concentration sur des murs d'escalade sécurisés.",
+    "category": "indoor",
+    "difficulty": "Avancé",
+    "duration": "2-3h",
+    "location": "Salles d'escalade",
+    "popularity": 4.6,
+    "participants": 28,
+    "href": "/activites/escalade",
+    "imageUrl": "/images/activities/escalade.jpg",
+    "groups": [
+      { "id": 6, "name": "Grimpeurs Elite", "members": 10, "nextSession": "2024-12-28", "level": "Avancé" }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Cyclisme urbain",
+    "description": "Parcourez la ville à vélo et découvrez de nouveaux quartiers tout en restant actif.",
+    "category": "outdoor",
+    "difficulty": "Intermédiaire",
+    "duration": "1-4h",
+    "location": "Ville, routes",
+    "popularity": 4.5,
+    "participants": 56,
+    "href": "/activites/cyclisme",
+    "imageUrl": "/images/activities/cyclisme.jpg",
+    "groups": [
+      { "id": 7, "name": "Vélos Urbains", "members": 18, "nextSession": "2024-12-29", "level": "Tous niveaux" }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Natation",
+    "description": "Entraînez-vous en piscine ou en plein air pour un exercice complet et rafraîchissant.",
+    "category": "water",
+    "difficulty": "Tous niveaux",
+    "duration": "1h",
+    "location": "Piscines, lacs",
+    "popularity": 4.8,
+    "participants": 42,
+    "href": "/activites/natation",
+    "imageUrl": "/images/activities/natation.jpg",
+    "groups": [
+      { "id": 8, "name": "Swimming Masters", "members": 12, "nextSession": "2024-12-28", "level": "Avancé" },
+      { "id": 9, "name": "Nageurs du Matin", "members": 8, "nextSession": "2024-12-29", "level": "Débutant" }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "CrossFit",
+    "description": "Entraînement fonctionnel intensif combinant force, cardio et gymnastique.",
+    "category": "indoor",
+    "difficulty": "Avancé",
+    "duration": "1h",
+    "location": "Box CrossFit",
+    "popularity": 4.7,
+    "participants": 35,
+    "href": "/activites/crossfit",
+    "imageUrl": "/images/activities/crossfit.jpg",
+    "groups": [
+      { "id": 10, "name": "CrossFit Warriors", "members": 15, "nextSession": "2024-12-28", "level": "Avancé" }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Pilates",
+    "description": "Renforcez votre corps et améliorez votre posture avec des exercices de contrôle.",
+    "category": "indoor",
+    "difficulty": "Tous niveaux",
+    "duration": "1h",
+    "location": "Studios Pilates",
+    "popularity": 4.6,
+    "participants": 38,
+    "href": "/activites/pilates",
+    "imageUrl": "/images/activities/pilates.jpg",
+    "groups": [
+      { "id": 11, "name": "Pilates Studio", "members": 12, "nextSession": "2024-12-29", "level": "Tous niveaux" }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Yoga Vinyasa",
+    "description": "Pratiquez un yoga dynamique et fluide qui synchronise mouvement et respiration.",
+    "category": "yoga",
+    "difficulty": "Intermédiaire",
+    "duration": "1h30",
+    "location": "Studios de yoga",
+    "popularity": 4.8,
+    "participants": 52,
+    "href": "/activites/yoga-vinyasa",
+    "imageUrl": "/images/activities/yoga-vinyasa.jpg",
+    "groups": [
+      { "id": 12, "name": "Vinyasa Flow", "members": 18, "nextSession": "2024-12-28", "level": "Intermédiaire" }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Yoga Hatha",
+    "description": "Yoga traditionnel pour équilibrer le corps et l'esprit avec des postures statiques.",
+    "category": "yoga",
+    "difficulty": "Tous niveaux",
+    "duration": "1h",
+    "location": "Studios de yoga",
+    "popularity": 4.7,
+    "participants": 45,
+    "href": "/activites/yoga-hatha",
+    "imageUrl": "/images/activities/yoga-hatha.jpg",
+    "groups": [
+      { "id": 13, "name": "Hatha Harmony", "members": 14, "nextSession": "2024-12-29", "level": "Tous niveaux" }
+    ]
+  }
+] 

@@ -16,7 +16,7 @@ export const preprocessEvents = (events: Event[]): Event[] => {
     const end = new Date(event.end);
 
     // Vérifier si l'événement s'étale sur plusieurs jours
-    if (start.getDay() !== end.getDay() && !event.allDay) {
+    if (start.getDay() !== end.getDay()) {
       const days = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
       const children: ChildEvent[] = [];
 
@@ -25,20 +25,21 @@ export const preprocessEvents = (events: Event[]): Event[] => {
         currentDayStart.setDate(start.getDate() + i);
         currentDayStart.setHours(0, 0, 0, 0);
 
-        if (i === 0) currentDayStart.setTime(start.getTime());
+        if (i === 0 && !event.allDay) currentDayStart.setTime(start.getTime());
 
         const currentDayEnd = new Date(currentDayStart);
         currentDayEnd.setHours(23, 59, 59);
 
-        if (i === days - 1) currentDayEnd.setTime(end.getTime());
+        if (i === days - 1 && !event.allDay) currentDayEnd.setTime(end.getTime());
 
-        const isAllDay =
+        const isAllDay = event.allDay || (
           currentDayStart.getHours() === 0 &&
           currentDayStart.getMinutes() === 0 &&
           currentDayStart.getSeconds() === 0 &&
           currentDayEnd.getHours() === 23 &&
           currentDayEnd.getMinutes() === 59 &&
-          currentDayEnd.getSeconds() === 59;
+          currentDayEnd.getSeconds() === 59
+        );
 
         // Générer un enfant
         const childEvent: ChildEvent = {

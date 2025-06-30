@@ -1,0 +1,24 @@
+[
+  {
+    "id": "viewership",
+    "data": [
+      { "name": "Lun", "live": 12000, "replay": 8000, "articles": 5000 },
+      { "name": "Mar", "live": 15000, "replay": 9500, "articles": 6200 },
+      { "name": "Mer", "live": 18000, "replay": 11000, "articles": 7800 },
+      { "name": "Jeu", "live": 22000, "replay": 13500, "articles": 9200 },
+      { "name": "Ven", "live": 25000, "replay": 16000, "articles": 10800 },
+      { "name": "Sam", "live": 28000, "replay": 18500, "articles": 12500 },
+      { "name": "Dim", "live": 32000, "replay": 21000, "articles": 14200 }
+    ]
+  },
+  {
+    "id": "contentDistribution",
+    "data": [
+      { "name": "Live Sports", "value": 40, "color": "#ef4444" },
+      { "name": "Rediffusions", "value": 25, "color": "#3b82f6" },
+      { "name": "Articles", "value": 20, "color": "#10b981" },
+      { "name": "Interviews", "value": 10, "color": "#f59e0b" },
+      { "name": "Autres", "value": 5, "color": "#8b5cf6" }
+    ]
+  }
+] 

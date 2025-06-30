@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Foot Amateur",
+    "description": "Échanges et conseils pour joueurs amateurs de tous niveaux.",
+    "members": 456,
+    "topics": 89,
+    "lastActivity": "Il y a 2h",
+    "category": "Football",
+    "trending": true
+  },
+  {
+    "title": "Course à pied",
+    "description": "Partage de parcours, astuces d'entraînement et conseils nutrition.",
+    "members": 324,
+    "topics": 67,
+    "lastActivity": "Il y a 4h",
+    "category": "Running",
+    "trending": false
+  },
+  {
+    "title": "Handisport",
+    "description": "Discussions sur l'accessibilité, l'inclusion et l'adaptation sportive.",
+    "members": 189,
+    "topics": 45,
+    "lastActivity": "Il y a 6h",
+    "category": "Inclusion",
+    "trending": true
+  },
+  {
+    "title": "Fitness & Musculation",
+    "description": "Programmes d'entraînement, conseils techniques et motivation.",
+    "members": 567,
+    "topics": 123,
+    "lastActivity": "Il y a 1h",
+    "category": "Fitness",
+    "trending": true
+  }
+] 

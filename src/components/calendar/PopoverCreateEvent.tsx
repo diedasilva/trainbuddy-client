@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { addDays, format} from "date-fns";
-import { CalendarIcon, Terminal } from "lucide-react";
+import { CalendarIcon, Terminal, Plus } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -23,16 +23,22 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { TimePicker } from "../common/timepicker/time-picker";
 import { Checkbox } from "../ui/checkbox";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function PopoverCreateEvent() {
     const [start, setStart] = useState<Date | undefined>(new Date());
-    //we setup end date to be 1 day after start date and we verify if date is set. If date is set we put it in the end date
     const [end, setEnd] = useState(start ? addDays(start, 1) : undefined);
     const [allDay, setAllDay] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
+    const [formData, setFormData] = useState({
+        name: "",
+        description: "",
+        coachName: "",
+        type: "workout"
+    });
 
     const handleCheckboxChange = (checked: boolean) => {
         setAllDay(checked);
@@ -44,8 +50,6 @@ export default function PopoverCreateEvent() {
     };
 
     const handleEndDateChange = (date: Date | undefined) => {
-        console.log("date", date);
-        console.log("start", start);
         if (date && start && date.getTime() >= start.getTime()) {
             setEnd(date);
             setShowAlert(false);
@@ -61,89 +65,119 @@ export default function PopoverCreateEvent() {
         }
     
         // Perform save action here
-        console.log("Event saved:", { start, end, allDay });
+        console.log("Event saved:", { start, end, allDay, formData });
         // Close the dialog or perform other actions as needed
-      };
+    };
+
+    const eventTypes = [
+        { value: "workout", label: "Entraînement" },
+        { value: "training", label: "Formation" },
+        { value: "cardio", label: "Cardio" },
+        { value: "yoga", label: "Yoga" },
+        { value: "strength", label: "Musculation" }
+    ];
+
     return (
     <div className={cn("grid gap-2", "grid-cols-1")}>
         <Dialog>
             <DialogTrigger asChild>
-                <Button>Créer une session 🚀</Button>
+                <Button className="gap-2">
+                    <Plus className="size-4" />
+                    Créer une session
+                </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[500px]">
                 <DialogHeader>
-                <DialogTitle>Créer une session 🚀</DialogTitle>
+                <DialogTitle>Créer une nouvelle session</DialogTitle>
                 <DialogDescription>
-                    Make changes to your profile here. Click save when you&apos;re done.
+                    Créez une nouvelle session d&apos;entraînement ou d&apos;activité.
                 </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="name" className="text-right">
-                        Name Session
+                        Nom
                         </Label>
                         <Input
                         id="name"
-                        defaultValue="Pedro Duarte"
+                        placeholder="Nom de la session"
+                        value={formData.name}
+                        onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                         className="col-span-3"
                         />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
+                        <Label htmlFor="description" className="text-right">
                         Description
                         </Label>
+                        <Textarea
+                        id="description"
+                        placeholder="Description de la session"
+                        value={formData.description}
+                        onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+                        className="col-span-3"
+                        rows={3}
+                        />
+                    </div>
+                    <div className="grid grid-cols-4 items-center gap-4">
+                        <Label htmlFor="coach" className="text-right">
+                        Coach
+                        </Label>
                         <Input
-                        id="username"
-                        defaultValue="Describe your session"
+                        id="coach"
+                        placeholder="Nom du coach"
+                        value={formData.coachName}
+                        onChange={(e) => setFormData(prev => ({ ...prev, coachName: e.target.value }))}
                         className="col-span-3"
                         />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                        Coach Name
+                        <Label htmlFor="type" className="text-right">
+                        Type
                         </Label>
-                        <Input
-                        id="username"
-                        defaultValue="@peduarte"
+                        <select
+                        value={formData.type}
+                        onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value }))}
                         className="col-span-3"
-                        />
-                    </div>
-                    <div className="grid grid-cols-1 items-center justify-items-center gap-4">
-                        <div className="my-2 flex items-center space-x-2">
-                        <Label
-                            htmlFor="terms"
-                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                         >
-                            Evenement journalier
-                        </Label>
-                        <Checkbox id="terms" onCheckedChange={handleCheckboxChange} />
-                        </div>
+                            {eventTypes.map((type) => (
+                                <option key={type.value} value={type.value}>
+                                    {type.label}
+                                </option>
+                            ))}
+                        </select>
                     </div>
+                    
+                    <div className="flex items-center space-x-2">
+                        <Checkbox id="allDay" onCheckedChange={handleCheckboxChange} />
+                        <Label htmlFor="allDay" className="text-sm font-medium">
+                            Événement journalier
+                        </Label>
+                    </div>
+
                     <div className="grid grid-cols-4 items-center gap-4">
-                        {!allDay ? (
-                        <Label className="text-right">Start</Label>
-                        ) : (
-                        <Label className="text-right">Date</Label>
-                        )}
-                        <div className="my-1 grid items-center">
+                        <Label className="text-right">
+                            {!allDay ? "Début" : "Date"}
+                        </Label>
+                        <div className="col-span-3">
                             <Popover>
                                 <PopoverTrigger asChild>
                                 <Button
-                                    variant={"outline"}
+                                    variant="outline"
                                     className={cn(
-                                    "justify-start text-left font-normal",
+                                    "w-full justify-start text-left font-normal",
                                     !start && "text-muted-foreground"
                                     )}
                                 >
-                                    <CalendarIcon />
+                                    <CalendarIcon className="mr-2 size-4" />
                                     {start ? (
                                     allDay ? (
                                         format(start, "PPP", { locale: fr })
                                     ) : (
-                                        format(start, "PPP HH':'mm", { locale: fr })
+                                        format(start, "PPP HH:mm", { locale: fr })
                                     )
                                     ) : (
-                                    <span>Pick a date</span>
+                                    <span>Sélectionner une date</span>
                                     )}
                                 </Button>
                                 </PopoverTrigger>
@@ -160,7 +194,6 @@ export default function PopoverCreateEvent() {
                                     locale={fr}
                                     initialFocus
                                 />
-                                {/* TimePicker only if allDay = false*/}
                                 {!allDay && (
                                     <div className="border-t border-border p-3">
                                     <TimePicker setDate={setStart} date={start} />
@@ -170,24 +203,25 @@ export default function PopoverCreateEvent() {
                             </Popover>
                         </div>
                     </div>
+                    
                     {!allDay && (
                         <div className="grid grid-cols-4 items-center gap-4">
-                        <Label className="text-right">End</Label>
-                        <div className="my-1 grid items-center">
+                        <Label className="text-right">Fin</Label>
+                        <div className="col-span-3">
                             <Popover>
                                 <PopoverTrigger asChild>
                                     <Button
-                                    variant={"outline"}
+                                    variant="outline"
                                     className={cn(
-                                        "justify-start text-left font-normal",
+                                        "w-full justify-start text-left font-normal",
                                         !end && "text-muted-foreground"
                                     )}
                                     >
-                                    <CalendarIcon />
+                                    <CalendarIcon className="mr-2 size-4" />
                                     {end ? (
-                                        format(end, "PPP HH':'mm", { locale: fr })
+                                        format(end, "PPP HH:mm", { locale: fr })
                                     ) : (
-                                        <span>Pick a date</span>
+                                        <span>Sélectionner une date</span>
                                     )}
                                     </Button>
                                 </PopoverTrigger>
@@ -204,7 +238,6 @@ export default function PopoverCreateEvent() {
                                     locale={fr}
                                     initialFocus
                                     />
-                                    {/* TimePicker only if allDay = false*/}
                                     <div className="border-t border-border p-3">
                                         <TimePicker setDate={handleEndDateChange} date={end} />
                                     </div>
@@ -213,21 +246,22 @@ export default function PopoverCreateEvent() {
                         </div>
                         </div>
                     )}
+                    
                     {showAlert && (
                         <Alert variant="destructive">
-                        <Terminal className="h-4 w-4" />
-                        <AlertTitle>
-                            End date cannot be earlier than start date !
-                        </AlertTitle>
+                        <Terminal className="size-4" />
+                        <AlertTitle>Date de fin invalide</AlertTitle>
                         <AlertDescription>
-                            Please select a date and time that is later than the start
-                            date.
+                            La date de fin ne peut pas être antérieure à la date de début.
                         </AlertDescription>
                         </Alert>
                     )}
                 </div>
                 <DialogFooter>
-                    <Button type="button" onClick={handleSave}>Save</Button>
+                    <Button type="button" onClick={handleSave} className="gap-2">
+                        <Plus className="size-4" />
+                        Créer la session
+                    </Button>
                 </DialogFooter>
                 <div id="popover-container_2"></div>
             </DialogContent>

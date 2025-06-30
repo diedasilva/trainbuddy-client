@@ -1,0 +1,214 @@
+[
+  {
+    "id": 1,
+    "title": "Programme Perte de Poids",
+    "description": "Programme complet de 12 semaines pour perdre du poids de manière saine et durable.",
+    "category": "weight_loss",
+    "difficulty": "Intermédiaire",
+    "duration": "12 semaines",
+    "price": 89,
+    "rating": 4.8,
+    "participants": 1250,
+    "coach": "Dr. Marie Dubois",
+    "imageUrl": "/images/health-programs/weight-loss.jpg",
+    "features": [
+      "Plan nutritionnel personnalisé",
+      "Programme d'entraînement progressif",
+      "Suivi hebdomadaire",
+      "Support communautaire",
+      "Recettes saines incluses"
+    ],
+    "modules": [
+      {
+        "id": 1,
+        "title": "Fondations",
+        "duration": "2 semaines",
+        "description": "Apprenez les bases de la nutrition et de l'exercice"
+      },
+      {
+        "id": 2,
+        "title": "Intensification",
+        "duration": "4 semaines",
+        "description": "Augmentez progressivement l'intensité"
+      },
+      {
+        "id": 3,
+        "title": "Optimisation",
+        "duration": "4 semaines",
+        "description": "Affinez votre programme pour de meilleurs résultats"
+      },
+      {
+        "id": 4,
+        "title": "Maintien",
+        "duration": "2 semaines",
+        "description": "Stabilisez vos résultats et préparez l'avenir"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Programme Cardio Fitness",
+    "description": "Améliorez votre endurance cardiovasculaire avec ce programme intensif de 8 semaines.",
+    "category": "cardio",
+    "difficulty": "Avancé",
+    "duration": "8 semaines",
+    "price": 69,
+    "rating": 4.7,
+    "participants": 890,
+    "coach": "Coach Thomas Martin",
+    "imageUrl": "/images/health-programs/cardio.jpg",
+    "features": [
+      "Entraînements HIIT",
+      "Suivi de fréquence cardiaque",
+      "Programme de course à pied",
+      "Séances de vélo",
+      "Tests de performance"
+    ],
+    "modules": [
+      {
+        "id": 5,
+        "title": "Base Cardio",
+        "duration": "2 semaines",
+        "description": "Développez votre base aérobie"
+      },
+      {
+        "id": 6,
+        "title": "HIIT Training",
+        "duration": "3 semaines",
+        "description": "Intensifiez avec des intervalles"
+      },
+      {
+        "id": 7,
+        "title": "Performance",
+        "duration": "3 semaines",
+        "description": "Optimisez vos performances"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Programme Yoga & Méditation",
+    "description": "Découvrez la paix intérieure et la flexibilité avec ce programme holistique.",
+    "category": "wellness",
+    "difficulty": "Tous niveaux",
+    "duration": "6 semaines",
+    "price": 49,
+    "rating": 4.9,
+    "participants": 2100,
+    "coach": "Sophie Chen",
+    "imageUrl": "/images/health-programs/yoga.jpg",
+    "features": [
+      "Séances de yoga guidées",
+      "Techniques de méditation",
+      "Exercices de respiration",
+      "Philosophie du yoga",
+      "Rituels matinaux"
+    ],
+    "modules": [
+      {
+        "id": 8,
+        "title": "Introduction",
+        "duration": "1 semaine",
+        "description": "Découvrez les bases du yoga"
+      },
+      {
+        "id": 9,
+        "title": "Pratique",
+        "duration": "3 semaines",
+        "description": "Développez votre pratique quotidienne"
+      },
+      {
+        "id": 10,
+        "title": "Méditation",
+        "duration": "2 semaines",
+        "description": "Intégrez la méditation à votre routine"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Programme Musculation",
+    "description": "Développez votre force et votre masse musculaire avec ce programme scientifique.",
+    "category": "strength",
+    "difficulty": "Intermédiaire",
+    "duration": "10 semaines",
+    "price": 79,
+    "rating": 4.6,
+    "participants": 750,
+    "coach": "Alexandre Rodriguez",
+    "imageUrl": "/images/health-programs/strength.jpg",
+    "features": [
+      "Programme de musculation progressif",
+      "Techniques d'exécution détaillées",
+      "Plan nutritionnel pour la prise de masse",
+      "Suivi des performances",
+      "Récupération optimisée"
+    ],
+    "modules": [
+      {
+        "id": 11,
+        "title": "Fondations",
+        "duration": "2 semaines",
+        "description": "Maîtrisez les mouvements de base"
+      },
+      {
+        "id": 12,
+        "title": "Volume",
+        "duration": "4 semaines",
+        "description": "Augmentez le volume d'entraînement"
+      },
+      {
+        "id": 13,
+        "title": "Intensité",
+        "duration": "4 semaines",
+        "description": "Intensifiez pour maximiser les gains"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Programme Nutrition Sportive",
+    "description": "Optimisez votre alimentation pour améliorer vos performances sportives.",
+    "category": "nutrition",
+    "difficulty": "Tous niveaux",
+    "duration": "4 semaines",
+    "price": 39,
+    "rating": 4.8,
+    "participants": 1650,
+    "coach": "Nutritionniste Claire Moreau",
+    "imageUrl": "/images/health-programs/nutrition.jpg",
+    "features": [
+      "Plan nutritionnel personnalisé",
+      "Recettes sportives",
+      "Guide des suppléments",
+      "Stratégies d'hydratation",
+      "Planification des repas"
+    ],
+    "modules": [
+      {
+        "id": 14,
+        "title": "Bases Nutritionnelles",
+        "duration": "1 semaine",
+        "description": "Comprendre les macronutriments"
+      },
+      {
+        "id": 15,
+        "title": "Nutrition Pré-Entraînement",
+        "duration": "1 semaine",
+        "description": "Optimisez vos repas avant l'effort"
+      },
+      {
+        "id": 16,
+        "title": "Récupération",
+        "duration": "1 semaine",
+        "description": "Alimentation post-entraînement"
+      },
+      {
+        "id": 17,
+        "title": "Optimisation",
+        "duration": "1 semaine",
+        "description": "Affinez votre stratégie nutritionnelle"
+      }
+    ]
+  }
+] 

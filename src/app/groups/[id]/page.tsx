@@ -1,358 +1,399 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-// import { useSession } from "next-auth/react"; // Désactivé pour l'instant car pas d'auth NextAuth
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import React, { useState, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { 
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
 import {
   ArrowLeft,
-  Share,
-  MapPin,
-  CalendarDays,
-  Bell,
-  FileText,
-  Info,
+  Users, 
+  Calendar, 
+  Activity, 
+  Star,
+  Share2,
+  Edit3,
+  Crown,
+  Shield,
+  UserPlus,
+  UserMinus,
+  TrendingUp,
+  Target,
+  Clock,
+  Globe,
+  Lock
 } from "lucide-react";
-import Chart from "@/components/chart/Chart";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
-interface GroupDetailsPageProps {
-  params: Promise<{ id: string }>;
-}
+import { useGroups } from "@/hooks/groups";
+import { mockApi } from "@/lib/api/mockApi";
+import type { TableData } from "@/lib/mockDb";
 
-export default function GroupDetailsPage({ params }: GroupDetailsPageProps) {
-  // const { data: session } = useSession();
-  // const currentUserId = session?.user?.id;
-  // TODO: remplacer currentUserId par ton propre hook d'authentification
-  const currentUserId = "";
-  const { id } = React.use(params);
-  const router = useRouter();
+export default function GroupDetailPage() {
+  const params = useParams();
+  const { getPermissions, getMembershipStatus } = useGroups();
+  
+  const [group, setGroup] = useState<TableData | null>(null);
+  const [activeTab, setActiveTab] = useState("overview");
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [group, setGroup] = useState<any>(null);
-  const [isMember, setIsMember] = useState(false);
+  const groupId = parseInt(params.id as string, 10);
 
   useEffect(() => {
-    fetch(`/api/groups/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setGroup(data);
-        // Vérifie si l'utilisateur est membre
-        setIsMember(data.members.some((m: any) => m.id === currentUserId));
-      })
-      .catch(() => {
-        // Données factices en fallback
-        const dummy = {
-          id,
-          name: "Fitness Squad",
-          description: "A group for fitness enthusiasts",
-          status: "Private",
-          coverUrl: "/images/cover.jpg",
-          avatarUrl: "/images/avatar.jpg",
-          nextWorkout: {
-            date: "Dec 29, 2024",
-            type: "Strength",
-            duration: "1h",
-          },
-          workoutHistory: [
-            { date: "Dec 20", type: "HIIT", duration: "45min" },
-            { date: "Dec 22", type: "Yoga", duration: "1h" },
-          ],
-          groupStats: [
-            { name: "Total Sessions", value: 24 },
-            { name: "Avg Duration (min)", value: 55 },
-          ],
-          groupProgress: [
-            { name: "Week 1", numberWorkouts: 5 },
-            { name: "Week 2", numberWorkouts: 6 },
-            { name: "Week 3", numberWorkouts: 7 },
-            { name: "Week 4", numberWorkouts: 8 },
-          ],
-          attendanceTrend: [
-            { name: "Jan", value: 80 },
-            { name: "Feb", value: 75 },
-            { name: "Mar", value: 85 },
-            { name: "Apr", value: 90 },
-          ],
-          upcomingEvents: [
-            {
-              id: "e1",
-              imageUrl: "/images/cover.jpg",
-              title: "Marathon",
-              date: "May 20, 2025",
-              location: "Park",
-            },
-            {
-              id: "e2",
-              imageUrl: "/images/cover.jpg",
-              title: "Yoga Retreat",
-              date: "June 15, 2025",
-              location: "Beach",
-            },
-            {
-              id: "e3",
-              imageUrl: "/images/cover.jpg",
-              title: "Pilates Workshop",
-              date: "July 10, 2025",
-              location: "Studio",
-            },
-          ],
-          resources: [
-            { id: "r1", title: "Workout Plan.pdf", url: "/files/plan.pdf" },
-            { id: "r2", title: "Nutrition Guide.pdf", url: "/files/guide.pdf" },
-            {
-              id: "r3",
-              title: "Stretching Routine.pdf",
-              url: "/files/stretch.pdf",
-            },
-          ],
-          members: [
-            { id: currentUserId, name: "You", isAdmin: false },
-            { id: "m1", name: "Alice", isAdmin: true },
-            { id: "m2", name: "Bob", isAdmin: false },
-            { id: "m3", name: "Charlie", isAdmin: false },
-          ],
-        };
-        setGroup(dummy);
-        setIsMember(true);
-      });
-  }, [id, currentUserId]);
+    const loadGroup = async () => {
+      if (groupId && !isNaN(groupId)) {
+        try {
+          const response = await mockApi.getGroupById(groupId);
+          if (response.success) {
+            setGroup(response.data);
+          } else {
+            console.error('Erreur lors du chargement du groupe:', response.message);
+          }
+        } catch (error) {
+          console.error('Erreur lors du chargement du groupe:', error);
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    };
 
-  if (!group) return <div className="p-8">Loading...</div>;
+    loadGroup();
+  }, [groupId]);
 
-  // Définition des onglets publics et privés
-  const publicTabs = ["about", "stats", "members"];
-  const privateTabs = ["attendance", "events", "resources"];
-  const tabs = isMember ? [...publicTabs, ...privateTabs] : publicTabs;
+  const handleJoinGroup = async () => {
+    if (group) {
+      console.log('Rejoindre le groupe:', group.id);
+      // Simulation - dans une vraie app, on appellerait l'API
+      alert('Fonctionnalité de rejoindre un groupe à implémenter');
+    }
+  };
+
+  const handleLeaveGroup = async () => {
+    if (group) {
+      console.log('Quitter le groupe:', group.id);
+      // Simulation - dans une vraie app, on appellerait l'API
+      alert('Fonctionnalité de quitter un groupe à implémenter');
+    }
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "public":
+        return "bg-green-100 text-green-800";
+      case "private":
+        return "bg-red-100 text-red-800";
+      case "invite-only":
+        return "bg-yellow-100 text-yellow-800";
+      default:
+        return "bg-slate-100 text-slate-800";
+    }
+  };
+
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case "public":
+        return <Globe className="size-4" />;
+      case "private":
+        return <Lock className="size-4" />;
+      case "invite-only":
+        return <Shield className="size-4" />;
+      default:
+        return <Globe className="size-4" />;
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <div className="size-10 animate-pulse rounded bg-slate-200"></div>
+            <div className="space-y-2">
+              <div className="h-8 w-64 animate-pulse rounded bg-slate-200"></div>
+              <div className="h-4 w-96 animate-pulse rounded bg-slate-200"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!group) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center">
+          <Users className="mx-auto mb-4 size-16 text-slate-400" />
+          <h1 className="mb-2 text-2xl font-bold text-slate-900">Groupe non trouvé</h1>
+          <p className="mb-6 text-slate-600">
+            Le groupe que vous recherchez n&apos;existe pas ou a été supprimé.
+          </p>
+          <Link href="/groups">
+            <Button>
+              <ArrowLeft className="mr-2 size-4" />
+              Retour aux groupes
+            </Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const membershipStatus = getMembershipStatus(Number(group.id));
+  const permissions = getPermissions(Number(group.id));
 
   return (
-    <div className="mx-auto max-w-4xl space-y-6 p-6">
+    <div className="container mx-auto px-4 py-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <Button variant="outline" onClick={() => router.back()}>
-          <ArrowLeft />
-        </Button>
-        <h1 className="text-3xl font-bold">{group.name}</h1>
-        <Button variant="outline">
-          <Share />
-        </Button>
-      </div>
-
-      {/* Cover + Avatar */}
-      {group.coverUrl && (
-        <div className="relative h-56 overflow-hidden rounded-xl shadow-md">
-          <Image
-            src={group.coverUrl}
-            alt="Cover"
-            fill
-            className="object-cover"
-          />
-          {group.avatarUrl && (
-            <div className="absolute bottom-2 left-4">
-              <Image
-                src={group.avatarUrl}
-                alt="Avatar"
-                width={96}
-                height={96}
-                className="rounded-full border-2 border-white shadow-lg"
-              />
+      <div className="mb-8 flex items-center gap-4">
+        <Link href="/groups">
+          <Button variant="ghost" size="sm" className="gap-2">
+            <ArrowLeft className="size-4" />
+            Retour
+          </Button>
+        </Link>
+        <div className="flex-1">
+          <div className="flex items-center gap-3">
+            <Avatar className="size-16">
+              <AvatarImage src={String(group.avatarUrl || '')} alt={String(group.name)} />
+              <AvatarFallback className="bg-slate-200 text-xl font-semibold text-slate-700">
+                {String(group.name).split(' ').map(n => n[0]).join('')}
+              </AvatarFallback>
+            </Avatar>
+            <div className="flex-1">
+              <h1 className="text-3xl font-bold text-slate-900">{String(group.name)}</h1>
+              <div className="mt-2 flex items-center space-x-2">
+                <Badge className={getStatusColor(String(group.status))}>
+                  {getStatusIcon(String(group.status))}
+                  <span className="ml-1">{String(group.status)}</span>
+                </Badge>
+                {permissions.canEdit && (
+                  <Badge variant="outline" className="bg-yellow-100 text-yellow-800">
+                    <Crown className="mr-1 size-3" />
+                    Admin
+                  </Badge>
+                )}
+                {permissions.canModerate && !permissions.canEdit && (
+                  <Badge variant="outline" className="bg-blue-100 text-blue-800">
+                    <Shield className="mr-1 size-3" />
+                    Modérateur
+                  </Badge>
+                )}
+              </div>
             </div>
-          )}
+          </div>
         </div>
-      )}
-
-      {/* Statut & Description */}
-      <div className="flex items-center space-x-4">
-        <span
-          className={`rounded-full px-3 py-1 text-sm font-medium ${
-            group.status === "Public"
-              ? "bg-green-100 text-green-800"
-              : "bg-red-100 text-red-800"
-          }`}
-        >
-          {group.status}
-        </span>
-        <Button size="sm" variant="ghost">
-          <Bell /> Notifications
-        </Button>
-      </div>
-      <p className="text-gray-600">{group.description}</p>
-
-      {/* Tabs */}
-      <Tabs defaultValue={tabs[0]}>
-        <TabsList className="mb-4 grid grid-cols-3 rounded-lg bg-gray-50 sm:grid-cols-6">
-          {tabs.map((tab) => (
-            <TabsTrigger
-              key={tab}
-              value={tab}
-              className="py-2 text-center capitalize hover:bg-gray-100"
+        
+        <div className="flex items-center gap-2">
+          {permissions.canEdit && (
+            <Link href={`/groups/${group.id}/edit`}>
+              <Button variant="outline" size="sm" className="gap-2">
+                <Edit3 className="size-4" />
+                Modifier
+              </Button>
+            </Link>
+          )}
+          
+          {membershipStatus === "member" ? (
+            <Button
+              variant="outline"
+              onClick={handleLeaveGroup}
+              className="gap-2"
             >
-              {tab}
-            </TabsTrigger>
-          ))}
+              <UserMinus className="size-4" />
+              Quitter
+            </Button>
+          ) : (
+            <Button
+              onClick={handleJoinGroup}
+              className="gap-2"
+            >
+              <UserPlus className="size-4" />
+              Rejoindre
+            </Button>
+          )}
+          
+          <Button variant="ghost" size="sm" className="gap-2">
+            <Share2 className="size-4" />
+            Partager
+          </Button>
+        </div>
+      </div>
+
+      {/* Description */}
+      <Card className="mb-8">
+        <CardContent className="p-6">
+          <p className="leading-relaxed text-slate-600">
+            {String(group.description)}
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Stats Overview */}
+      <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-4">
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center space-x-3">
+              <div className="rounded-xl bg-blue-100 p-3">
+                <Users className="size-6 text-blue-600" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-slate-600">Membres</p>
+                <p className="text-2xl font-bold text-slate-900">{String(group.totalMembers || 0)}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center space-x-3">
+              <div className="rounded-xl bg-green-100 p-3">
+                <Activity className="size-6 text-green-600" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-slate-600">Actifs</p>
+                <p className="text-2xl font-bold text-slate-900">{String(group.activeMembers || 0)}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center space-x-3">
+              <div className="rounded-xl bg-purple-100 p-3">
+                <Calendar className="size-6 text-purple-600" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-slate-600">Sessions</p>
+                <p className="text-2xl font-bold text-slate-900">{String(group.workoutCount || 0)}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center space-x-3">
+              <div className="rounded-xl bg-orange-100 p-3">
+                <Star className="size-6 text-orange-600" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-slate-600">Note</p>
+                <p className="text-2xl font-bold text-slate-900">4.8</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Main Content Tabs */}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="overview">Aperçu</TabsTrigger>
+          <TabsTrigger value="members">Membres</TabsTrigger>
+          <TabsTrigger value="activities">Activités</TabsTrigger>
+          <TabsTrigger value="settings">Paramètres</TabsTrigger>
         </TabsList>
 
-        {/* À propos */}
-        <TabsContent value="about">
-          <Card className="flex flex-col space-y-4 p-6 shadow-lg transition-shadow duration-200 hover:shadow-xl">
-            <div className="flex items-center space-x-3">
-              <Info className="text-2xl text-indigo-500" />
-              <h2 className="text-2xl font-semibold">À propos du groupe</h2>
-            </div>
-            <p className="leading-relaxed text-gray-700">{group.description}</p>
-          </Card>
-        </TabsContent>
+        <TabsContent value="overview" className="space-y-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Informations du groupe</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Catégorie</span>
+                  <Badge variant="outline">{String(group.category)}</Badge>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Créé le</span>
+                  <span>{String(group.createdAt)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Dernière activité</span>
+                  <span>{String(group.lastActivity)}</span>
+                </div>
+              </CardContent>
+            </Card>
 
-        {/* Stats publiques */}
-        <TabsContent value="stats" className="space-y-2">
-          <Chart
-            type="bar"
-            data={group.groupStats}
-            min={0}
-            dataKey="value"
-            title="Group Stats"
-          />
-          <Chart
-            type="line"
-            data={group.groupProgress}
-            dataKey="numberWorkouts"
-            title="Progress Over Time"
-          />
-        </TabsContent>
-
-        {/* Membres */}
-        <TabsContent value="members">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {group.members.map((m: any) => (
-              <Card
-                key={m.id}
-                className="flex flex-col items-center p-4 transition-shadow hover:shadow-lg"
-              >
-                <Avatar className="mb-4 size-24">
-                  {m.avatarUrl ? (
-                    <AvatarImage src={m.avatarUrl} alt={m.name} />
-                  ) : (
-                    <AvatarFallback>{m.name.charAt(0)}</AvatarFallback>
-                  )}
-                </Avatar>
-                <p className="text-lg font-semibold">{m.name}</p>
-                {m.isAdmin && (
-                  <span className="mt-1 text-sm text-blue-600">Admin</span>
-                )}
-              </Card>
-            ))}
+            <Card>
+              <CardHeader>
+                <CardTitle>Statistiques récentes</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <TrendingUp className="size-4 text-green-600" />
+                    <span className="text-sm text-slate-600">Croissance</span>
+                  </div>
+                  <span className="font-semibold text-green-600">+12%</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <Target className="size-4 text-blue-600" />
+                    <span className="text-sm text-slate-600">Objectifs atteints</span>
+                  </div>
+                  <span className="font-semibold">85%</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <Clock className="size-4 text-orange-600" />
+                    <span className="text-sm text-slate-600">Temps moyen</span>
+                  </div>
+                  <span className="font-semibold">45 min</span>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </TabsContent>
 
-        {/* Attendance privée */}
-        {isMember && (
-          <TabsContent value="attendance">
-            <Chart
-              type="line"
-              data={group.attendanceTrend}
-              dataKey="value"
-              max={100}
-              min={0}
-              title="Attendance"
-            />
-          </TabsContent>
-        )}
+        <TabsContent value="members" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Membres du groupe</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-slate-600">
+                Liste des membres à implémenter avec l&apos;API Spring Java.
+              </p>
+            </CardContent>
+          </Card>
+        </TabsContent>
 
-        {/* Événements privés */}
-        {tabs.includes("events") && (
-          <TabsContent value="events">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {group.upcomingEvents.map((e) => (
-                <Card
-                  key={e.id}
-                  className="flex flex-col overflow-hidden shadow-lg transition-shadow duration-200 hover:shadow-xl"
-                >
-                  {/* Illustration */}
-                  <div className="relative h-32 bg-gray-100">
-                    {e.imageUrl ? (
-                      <Image
-                        src={e.imageUrl}
-                        alt={e.title}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="flex h-full items-center justify-center">
-                        <CalendarDays className="text-gray-300" size={48} />
-                      </div>
-                    )}
-                  </div>
+        <TabsContent value="activities" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Activités récentes</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-slate-600">
+                Activités récentes à implémenter avec l&apos;API Spring Java.
+              </p>
+            </CardContent>
+          </Card>
+        </TabsContent>
 
-                  {/* Contenu */}
-                  <CardContent className="my-2 flex-1">
-                    <CardTitle className="mb-2 text-lg font-semibold">
-                      {e.title}
-                    </CardTitle>
-                    <div className="mb-1 flex items-center text-sm text-gray-600">
-                      <CalendarDays className="mr-2" size={16} />
-                      <time dateTime={e.date}>{e.date}</time>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <MapPin className="mr-2" size={16} />
-                      {e.location}
-                    </div>
-                  </CardContent>
-
-                  {/* Action */}
-                  <div className="border-t border-gray-100 p-4 text-right">
-                    {isMember ? (
-                      <Button variant="outline" size="sm">
-                        Je participe
-                      </Button>
-                    ) : (
-                      <Button variant="secondary" size="sm" disabled>
-                        Réservé aux membres
-                      </Button>
-                    )}
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-        )}
-
-        {/* Ressources privées */}
-        {tabs.includes("resources") && (
-          <TabsContent value="resources">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {group.resources.map((r: any) => (
-                <Card
-                  key={r.id}
-                  className="flex flex-col justify-between p-4 transition-shadow duration-200 hover:shadow-lg"
-                >
-                  <div className="flex items-center space-x-3">
-                    <FileText className="text-indigo-500" size={24} />
-                    <div>
-                      <h4 className="text-lg font-semibold">{r.title}</h4>
-                      {r.size && (
-                        <p className="text-sm text-gray-500">{r.size}</p>
-                      )}
-                    </div>
-                  </div>
-                  <div className="mt-4 flex justify-end">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      as="a"
-                      href={r.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Télécharger
-                    </Button>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-        )}
+        <TabsContent value="settings" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Paramètres du groupe</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-slate-600">
+                Paramètres à implémenter avec l&apos;API Spring Java.
+              </p>
+            </CardContent>
+          </Card>
+        </TabsContent>
       </Tabs>
     </div>
   );

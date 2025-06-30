@@ -1,9 +1,13 @@
 const USE_MOCKS = process.env.NEXT_PUBLIC_USE_MOCKS === 'true';
 
-function buildUrl(path: string, params?: Record<string, any>) {
+// Import de l'API mockée optimisée
+import { mockApi } from './api/mockApi';
+import type { TableData } from './mockDb';
+
+function buildUrl(path: string, params?: Record<string, unknown>) {
   if (USE_MOCKS) {
-    // Charge le JSON statique depuis public/mocks
-    return `/mocks${path}.json`;
+    // Utiliser l'API mockée optimisée au lieu des fichiers JSON statiques
+    return `/api/mock${path}`;
   } else {
     // Version API réelle
     const base = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -17,14 +21,20 @@ function buildUrl(path: string, params?: Record<string, any>) {
   }
 }
 
-export async function apiGet<T>(path: string, params?: Record<string, any>): Promise<T> {
+export async function apiGet<T = TableData[]>(path: string, params?: Record<string, unknown>): Promise<T> {
+  if (USE_MOCKS) {
+    // Utiliser l'API mockée optimisée
+    const response = await mockApi.findAll(path.replace('/', ''), params);
+    return response.data as T;
+  } else {
   const url = buildUrl(path, params);
   const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) throw new Error(`GET ${url} failed: ${res.status}`);
   return res.json() as Promise<T>;
+  }
 }
 
-export async function apiPost<T, U = any>(path: string, body: U): Promise<T> {
+export async function apiPost<T = TableData, U = Record<string, unknown>>(path: string, body: U): Promise<T> {
   if (USE_MOCKS) {
     throw new Error('POST not supported in mock mode');
   }
@@ -38,3 +48,6 @@ export async function apiPost<T, U = any>(path: string, body: U): Promise<T> {
   if (!res.ok) throw new Error(`POST ${url} failed: ${res.status}`);
   return res.json() as Promise<T>;
 }
+
+// Export de l'API mockée pour utilisation directe
+export { mockApi };

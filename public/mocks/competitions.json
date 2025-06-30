@@ -1,0 +1,205 @@
+[
+  {
+    "id": 1,
+    "title": "Tournoi de Tennis Open",
+    "description": "Compétition de tennis ouverte à tous les niveaux avec des prix à la clé.",
+    "category": "tennis",
+    "categorySlug": "indoor",
+    "difficulty": "Tous niveaux",
+    "startDate": "2025-06-15T09:00:00Z",
+    "endDate": "2025-06-20T18:00:00Z",
+    "location": "Tennis Club Paris",
+    "maxParticipants": 64,
+    "currentParticipants": 48,
+    "entryFee": 25,
+    "prizePool": 1000,
+    "status": "registration_open",
+    "organizer": "Tennis Club Paris",
+    "imageUrl": "/images/competitions/tennis-tournament.jpg",
+    "duration": "6 jours",
+    "prize": "1 000€",
+    "participants": 48,
+    "teams": 8,
+    "features": ["Surface synthétique", "Arbitres officiels", "Buvette sur place"],
+    "topTeams": [
+      { "name": "Tennis Stars", "score": 120, "members": 4 },
+      { "name": "Paris Raquettes", "score": 110, "members": 4 },
+      { "name": "Ace Club", "score": 100, "members": 4 }
+    ],
+    "myTeam": { "name": "Tennis Stars", "rank": 1, "score": 120 },
+    "href": "/competitions/1",
+    "rules": [
+      "Format simple élimination",
+      "Matchs en 2 sets gagnants",
+      "Tie-break à 6-6",
+      "Équipement fourni"
+    ],
+    "categories": [
+      { "id": 1, "name": "Débutant", "ageRange": "18-25", "participants": 16 },
+      { "id": 2, "name": "Intermédiaire", "ageRange": "18-35", "participants": 20 },
+      { "id": 3, "name": "Avancé", "ageRange": "18+", "participants": 12 }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Marathon Urbain 2025",
+    "description": "Course à pied de 42km à travers les rues de Paris avec un parcours magnifique.",
+    "category": "running",
+    "categorySlug": "outdoor",
+    "difficulty": "Avancé",
+    "startDate": "2025-04-20T08:00:00Z",
+    "endDate": "2025-04-20T16:00:00Z",
+    "location": "Paris, France",
+    "maxParticipants": 5000,
+    "currentParticipants": 3200,
+    "entryFee": 45,
+    "prizePool": 5000,
+    "status": "registration_open",
+    "organizer": "Fédération Française d'Athlétisme",
+    "imageUrl": "/images/competitions/marathon.jpg",
+    "duration": "1 jour",
+    "prize": "5 000€",
+    "participants": 3200,
+    "teams": 50,
+    "features": ["Parcours chronométré officiel", "Ravitaillements tous les 5km", "Certificat médical obligatoire"],
+    "topTeams": [
+      { "name": "Paris Runners", "score": 210, "members": 10 },
+      { "name": "Marathoniens 75", "score": 200, "members": 8 },
+      { "name": "Endurance Team", "score": 195, "members": 12 }
+    ],
+    "myTeam": { "name": "Paris Runners", "rank": 1, "score": 210 },
+    "href": "/competitions/2",
+    "rules": [
+      "Parcours chronométré officiel",
+      "Ravitaillements tous les 5km",
+      "Certificat médical obligatoire",
+      "Dossard et puce fournis"
+    ],
+    "categories": [
+      { "id": 4, "name": "Hommes", "ageRange": "18-65", "participants": 1800 },
+      { "id": 5, "name": "Femmes", "ageRange": "18-65", "participants": 1400 }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Championnat de Natation",
+    "description": "Compétition de natation en piscine olympique avec plusieurs épreuves.",
+    "category": "swimming",
+    "categorySlug": "water",
+    "difficulty": "Intermédiaire",
+    "startDate": "2025-07-10T09:00:00Z",
+    "endDate": "2025-07-12T18:00:00Z",
+    "location": "Piscine Olympique de Paris",
+    "maxParticipants": 200,
+    "currentParticipants": 156,
+    "entryFee": 30,
+    "prizePool": 2000,
+    "status": "registration_open",
+    "organizer": "Fédération Française de Natation",
+    "imageUrl": "/images/competitions/swimming.jpg",
+    "duration": "3 jours",
+    "prize": "2 000€",
+    "participants": 156,
+    "teams": 20,
+    "features": ["Épreuves individuelles et relais", "Nages libre, dos, brasse, papillon", "Catégories par âge"],
+    "topTeams": [
+      { "name": "Paris Swim", "score": 180, "members": 8 },
+      { "name": "Les Dauphins", "score": 170, "members": 6 },
+      { "name": "Aqua Club", "score": 165, "members": 10 }
+    ],
+    "myTeam": { "name": "Paris Swim", "rank": 1, "score": 180 },
+    "href": "/competitions/3",
+    "rules": [
+      "Épreuves individuelles et relais",
+      "Nages libre, dos, brasse, papillon",
+      "Catégories par âge",
+      "Équipement personnel autorisé"
+    ],
+    "categories": [
+      { "id": 6, "name": "Juniors", "ageRange": "12-17", "participants": 45 },
+      { "id": 7, "name": "Seniors", "ageRange": "18-35", "participants": 78 },
+      { "id": 8, "name": "Masters", "ageRange": "35+", "participants": 33 }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Tournoi de Beach-Volley",
+    "description": "Compétition de beach-volley sur sable avec équipes de 2 joueurs.",
+    "category": "beach-volley",
+    "categorySlug": "outdoor",
+    "difficulty": "Intermédiaire",
+    "startDate": "2025-08-05T10:00:00Z",
+    "endDate": "2025-08-07T18:00:00Z",
+    "location": "Plage de Pampelonne, Saint-Tropez",
+    "maxParticipants": 32,
+    "currentParticipants": 28,
+    "entryFee": 40,
+    "prizePool": 1500,
+    "status": "registration_open",
+    "organizer": "Beach Volley Club",
+    "imageUrl": "/images/competitions/beach-volley.jpg",
+    "duration": "3 jours",
+    "prize": "1 500€",
+    "participants": 28,
+    "teams": 16,
+    "features": ["Équipes de 2 joueurs", "Format double élimination", "Matchs en 2 sets gagnants"],
+    "topTeams": [
+      { "name": "Beach Kings", "score": 90, "members": 2 },
+      { "name": "Sable d'Or", "score": 85, "members": 2 },
+      { "name": "Volley Stars", "score": 80, "members": 2 }
+    ],
+    "myTeam": { "name": "Beach Kings", "rank": 1, "score": 90 },
+    "href": "/competitions/4",
+    "rules": [
+      "Équipes de 2 joueurs",
+      "Format double élimination",
+      "Matchs en 2 sets gagnants",
+      "Filet et balles fournis"
+    ],
+    "categories": [
+      { "id": 9, "name": "Mixte", "ageRange": "18+", "participants": 16 },
+      { "id": 10, "name": "Hommes", "ageRange": "18+", "participants": 12 }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Critérium Cycliste",
+    "description": "Course cycliste sur route avec plusieurs catégories et un parcours varié.",
+    "category": "cycling",
+    "categorySlug": "outdoor",
+    "difficulty": "Avancé",
+    "startDate": "2025-09-15T07:00:00Z",
+    "endDate": "2025-09-15T17:00:00Z",
+    "location": "Région Île-de-France",
+    "maxParticipants": 300,
+    "currentParticipants": 245,
+    "entryFee": 35,
+    "prizePool": 3000,
+    "status": "registration_open",
+    "organizer": "Fédération Française de Cyclisme",
+    "imageUrl": "/images/competitions/cycling.jpg",
+    "duration": "1 jour",
+    "prize": "3 000€",
+    "participants": 245,
+    "teams": 30,
+    "features": ["Parcours de 120km", "Ravitaillements prévus", "Voiture d'assistance autorisée"],
+    "topTeams": [
+      { "name": "Cyclo Paris", "score": 320, "members": 10 },
+      { "name": "Les Rouleurs", "score": 310, "members": 8 },
+      { "name": "Vélo Club 92", "score": 295, "members": 12 }
+    ],
+    "myTeam": { "name": "Cyclo Paris", "rank": 1, "score": 320 },
+    "href": "/competitions/5",
+    "rules": [
+      "Parcours de 120km",
+      "Équipement de sécurité obligatoire",
+      "Ravitaillements prévus",
+      "Voiture d'assistance autorisée"
+    ],
+    "categories": [
+      { "id": 11, "name": "Elite", "ageRange": "18-35", "participants": 80 },
+      { "id": 12, "name": "Masters", "ageRange": "35-50", "participants": 95 },
+      { "id": 13, "name": "Vétérans", "ageRange": "50+", "participants": 70 }
+    ]
+  }
+] 

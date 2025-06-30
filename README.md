@@ -1,2 +1,2 @@
 # trainbuddy-client
- Client web of the application TrainBuddy
+Client web de l'application TrainBuddy

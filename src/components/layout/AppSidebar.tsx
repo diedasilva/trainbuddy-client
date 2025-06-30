@@ -1,5 +1,8 @@
-import { Calendar, ChevronUp, Home, Inbox, /*Search,*/ Settings, UserPen, LogOut, ChartColumn } from "lucide-react"
+"use client";
+
+import { Calendar, ChevronUp, Home, Settings, UserPen, LogOut, Activity, HeartPulse, Trophy, Users, Tv, Briefcase, User, Shield } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { usePathname } from "next/navigation"
 
 import {
   Sidebar,
@@ -7,7 +10,6 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -27,46 +29,78 @@ import Link from "next/link"
 // Menu items.
 const items = [
   {
-    title: "Home",
+    title: "Accueil",
     url: "/",
     icon: Home,
   },
   {
-    title: "Groups",
-    url: "/groups",
-    icon: Inbox,
+    title: "Activités",
+    url: "/activities",
+    icon: Activity,
   },
   {
-    title: "Calendar",
+    title: "Programmes santé",
+    url: "/health-programs",
+    icon: HeartPulse,
+  },
+  {
+    title: "Compétitions & défis",
+    url: "/competitions",
+    icon: Trophy,
+  },
+  {
+    title: "Communauté",
+    url: "/community",
+    icon: Users,
+  },
+  {
+    title: "Médias & événements",
+    url: "/media-events",
+    icon: Tv,
+  },
+  {
+    title: "Carrières & pro",
+    url: "/careers",
+    icon: Briefcase,
+  },
+  {
+    title: "Calendrier",
     url: "/calendar",
     icon: Calendar,
   },
   {
-    title: "Statistiques",
-    url: "/stats",
-    icon: ChartColumn,
+    title: "Groupes",
+    url: "/groups",
+    icon: Shield,
   }
 ]
 
 export function AppSidebar() {
+  const pathname = usePathname();
+
   return (
     <Sidebar>
       <SidebarHeader><h1>TrainBuddy</h1></SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {items.map((item) => {
+                const isActive = pathname === item.url;
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild className={isActive ? "bg-primary text-primary-foreground" : ""}>
+                      <Link href={item.url}>
+                        <item.icon />
+                        <span>{item.title}</span>
+                        {isActive && (
+                          <div className="ml-auto w-2 h-2 bg-primary-foreground rounded-full" />
+                        )}
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -92,17 +126,25 @@ export function AppSidebar() {
                   side="top"
                   className="w-[--radix-popper-anchor-width]"
                 >
-                  <DropdownMenuItem>
-                    <UserPen />
-                    <span>Account</span>
+                  <DropdownMenuItem asChild>
+                    <Link href="/profile">
+                      <User />
+                      <span>Profil</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/auth">
+                      <UserPen />
+                      <span>Authentification</span>
+                    </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <Settings />
-                    <span>Settings</span>
+                    <span>Paramètres</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <LogOut />
-                    <span>Sign out</span>
+                    <span>Déconnexion</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

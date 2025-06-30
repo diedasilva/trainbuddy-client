@@ -1,0 +1,28 @@
+[
+  {
+    "id": "growth",
+    "data": [
+      { "name": "Jan", "members": 1200, "events": 8, "groups": 45 },
+      { "name": "Fév", "members": 1350, "events": 12, "groups": 52 },
+      { "name": "Mar", "members": 1480, "events": 15, "groups": 58 },
+      { "name": "Avr", "members": 1620, "events": 18, "groups": 65 },
+      { "name": "Mai", "members": 1780, "events": 22, "groups": 72 },
+      { "name": "Juin", "members": 1950, "events": 25, "groups": 78 },
+      { "name": "Juil", "members": 2150, "events": 28, "groups": 85 },
+      { "name": "Août", "members": 2340, "events": 30, "groups": 92 },
+      { "name": "Sep", "members": 2540, "events": 32, "groups": 98 },
+      { "name": "Oct", "members": 2750, "events": 35, "groups": 105 },
+      { "name": "Nov", "members": 2847, "events": 18, "groups": 156 }
+    ]
+  },
+  {
+    "id": "activityDistribution",
+    "data": [
+      { "name": "Forums", "value": 35, "color": "#3b82f6" },
+      { "name": "Événements", "value": 25, "color": "#10b981" },
+      { "name": "Groupes", "value": 20, "color": "#f59e0b" },
+      { "name": "Challenges", "value": 15, "color": "#ef4444" },
+      { "name": "Autres", "value": 5, "color": "#8b5cf6" }
+    ]
+  }
+] 

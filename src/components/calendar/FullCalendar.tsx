@@ -2,35 +2,66 @@ import React, { useState, useEffect, useMemo } from "react";
 import DayView from "./DayView";
 import WeekView from "./WeekView";
 import MonthView from "./MonthView";
-import PopoverCreateEvent from "./PopoverCreateEvent";
 import { Event } from "@/utils/types";
 import { Button } from "@/components/ui/button";
 import { preprocessEvents, groupOverlappingEvents} from "@/utils/eventUtils";
 
-export default function FullCalendar() {
+interface FullCalendarProps {
+  filteredEvents?: Event[];
+  loading?: boolean;
+}
+
+export default function FullCalendar({ filteredEvents, loading = false }: FullCalendarProps) {
   const [events, setEvents] = useState<Event[]>([]);
   const [view, setView] = useState<"day" | "week" | "month">("week");
 
-  // Charger les événements
+  // Charger les événements si aucun n'est fourni en props
   useEffect(() => {
-    fetch("/events.json")
+    if (!filteredEvents) {
+    fetch("/mocks/events.json")
       .then((res) => res.json())
       .then((data) => {
         const processedEvents = preprocessEvents(data);
+        // Transformer l'id en string
+        processedEvents.forEach((event) => {
+          event.id = event.id.toString();
+          if (event.children) {
+            event.children.forEach((child) => {
+              child.id = child.id.toString();
+            });
+          }
+        });
         setEvents(processedEvents);
       })
       .catch((err) => console.error("Erreur de chargement :", err));
-  }, []);
+    }
+  }, [filteredEvents]);
+
+  // Utiliser les événements filtrés si fournis, sinon utiliser les événements locaux
+  const eventsToUse = filteredEvents || events;
 
   // Pré-calcul des chevauchements avec useMemo
-  const enrichedEvents = useMemo(
-    () => groupOverlappingEvents(events),
-    [events]
-  );
+  const enrichedEvents = useMemo(() => {
+    // Si on a des événements filtrés, on doit les traiter avec preprocessEvents
+    // car ils viennent directement du JSON sans traitement
+    const processedEvents = filteredEvents 
+      ? preprocessEvents(filteredEvents)
+      : eventsToUse;
+    
+    return groupOverlappingEvents(processedEvents);
+  }, [eventsToUse, filteredEvents]);
   console.log("Événements enrichis :", enrichedEvents);
 
   // Sélection de la vue
   const renderView = () => {
+    if (loading) {
+      return (
+        <div className="flex items-center justify-center h-64">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-slate-900"></div>
+        </div>
+      );
+    }
+
     switch (view) {
       case "day":
         return <DayView events={enrichedEvents} />;
@@ -50,7 +81,6 @@ export default function FullCalendar() {
         <div className="sticky top-0 z-10 mb-4 flex items-center justify-between bg-white p-4 shadow-sm">
           <div>
             <h2 className="text-xl font-bold">Calendrier</h2>
-            <PopoverCreateEvent />
           </div>
           <div className="flex space-x-2">
             <Button onClick={() => setView("day")}>Journée</Button>

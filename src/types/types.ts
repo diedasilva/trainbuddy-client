@@ -35,7 +35,7 @@ export interface Session {
   groupId?: number;
   coachId?: number;
   status: "PLANNED" | "COMPLETED" | "CANCELED";
-  details: Record<string, any>;
+  details: Record<string, unknown>;
   createdAt: string;
   updatedAt: string;
 }
@@ -51,7 +51,7 @@ export interface Exercise {
   id: number;
   name: string;
   activityType: string;
-  defaultConf: Record<string, any>;
+  defaultConf: Record<string, unknown>;
   createdAt: string;
 }
 
@@ -59,7 +59,7 @@ export interface SessionExercise {
   sessionId: number;
   exerciseId: number;
   seq: number;
-  config: Record<string, any>;
+  config: Record<string, unknown>;
 }
 
 export interface Chart {
@@ -68,7 +68,20 @@ export interface Chart {
   description?: string;
   userId?: number;
   groupId?: number;
-  config: Record<string, any>;
+  config: Record<string, unknown>;
   createdAt: string;
   updatedAt: string;
+}
+
+// Interface pour les événements avec ID en string
+export interface Event {
+  id: string;
+  title: string;
+  description?: string;
+  start: string;
+  end: string;
+  allDay?: boolean;
+  location?: string;
+  createdBy: string;
+  color?: string;
 }

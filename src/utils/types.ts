@@ -1,12 +1,8 @@
-export type Event = {
-  id: string;
-  start: string; // Date ISO
-  end: string;
-  allDay?: boolean;
+import { Event as BaseEvent } from "@/types/types";
+
+export type Event = BaseEvent & {
   groupIndex?: number; // Ajouté pour gérer les chevauchements
   groupSize?: number;
-  description?: string;
-  title?: string;
   children?: ChildEvent[];
 };
 

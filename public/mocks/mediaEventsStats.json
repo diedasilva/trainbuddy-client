@@ -1,0 +1,6 @@
+[
+  { "label": "Vues totales", "value": 1200000, "icon": "Eye", "trend": "+18%" },
+  { "label": "Émissions live", "value": 156, "icon": "Tv", "trend": "+25%" },
+  { "label": "Articles publiés", "value": 89, "icon": "BookOpen", "trend": "+12%" },
+  { "label": "Spectateurs actifs", "value": 45000, "icon": "Users", "trend": "+30%" }
+] 

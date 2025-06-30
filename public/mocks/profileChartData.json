@@ -1,0 +1,9 @@
+[
+  { "name": "Lun", "workouts": 45 },
+  { "name": "Mar", "workouts": 30 },
+  { "name": "Mer", "workouts": 60 },
+  { "name": "Jeu", "workouts": 45 },
+  { "name": "Ven", "workouts": 75 },
+  { "name": "Sam", "workouts": 90 },
+  { "name": "Dim", "workouts": 60 }
+] 
